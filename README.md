@@ -1,16 +1,14 @@
 # crypto_price_tracker
 
-A cryptocurrency price tracker
+A cryptocurrency price tracker that consumes CoinAPI.
+
+![crypt](https://user-images.githubusercontent.com/8771994/115569954-14a2b880-a294-11eb-84a5-c8d2d2c37e55.png)
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+1. Go to [CoinAPI](https://www.coinapi.io/) and generate and API key. You receive an e-mail;
+2. In the project, go to the `lib/data/coin_data.dart` and change de `const APIKey` value to the API key you received via e-mail.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## On Hold
+- New UI
+- A dialog to show errors. Now it`s only printing the error on the log when there`s an error on the request.
