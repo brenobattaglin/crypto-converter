@@ -11,4 +11,4 @@ A cryptocurrency price tracker that consumes CoinAPI.
 
 ## On Hold
 - New UI
-- A dialog to show errors. Now it`s only printing the error on the log when there`s an error on the request.
+- A dialog to show errors. Now it's only printing the error on the log when there's an error on the request.
