@@ -1,6 +1,5 @@
-import 'package:crypto_price_tracker/screens/price.dart';
+import 'package:crypto_price_tracker/pages/price_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_nord_theme/flutter_nord_theme.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,8 +10,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: NordTheme.dark(),
-      home: PriceScreen(),
+      theme: ThemeData.dark(),
+      home: PricePage(),
     );
   }
 }
