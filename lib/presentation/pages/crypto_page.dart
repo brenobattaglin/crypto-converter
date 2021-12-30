@@ -1,14 +1,15 @@
 import 'package:crypto_price_tracker/data/coin_data.dart';
+import 'package:crypto_price_tracker/presentation/presentation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
 
-class PricePage extends StatefulWidget {
+class CryptoPage extends StatefulWidget {
   @override
-  _PricePageState createState() => _PricePageState();
+  _CryptoPageState createState() => _CryptoPageState();
 }
 
-class _PricePageState extends State<PricePage> {
+class _CryptoPageState extends State<CryptoPage> {
   String selectedCurrency = 'USD';
   CoinData coinData = CoinData();
   bool isWaiting = false;
@@ -36,7 +37,7 @@ class _PricePageState extends State<PricePage> {
       items: dropdownItems,
       onChanged: (value) {
         setState(() {
-          selectedCurrency = value;
+          selectedCurrency = value!;
           getData();
         });
       },
@@ -94,50 +95,19 @@ class _PricePageState extends State<PricePage> {
   }
 
   Column makeCards() {
-    List<CryptoCoinCard> cryptoCards = [];
+    List<CryptoCardWidget> cryptoCards = [];
     for (String crypto in cryptoList) {
       cryptoCards.add(
-        CryptoCoinCard(
+        CryptoCardWidget(
           cryptoCurrency: crypto,
           currency: selectedCurrency,
-          value: isWaiting ? '?' : coinValues[crypto],
+          value: isWaiting ? '??' : coinValues[crypto],
         ),
       );
     }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: cryptoCards,
-    );
-  }
-}
-
-class CryptoCoinCard extends StatelessWidget {
-  const CryptoCoinCard({this.cryptoCurrency, this.currency, this.value});
-
-  final String cryptoCurrency;
-  final String currency;
-  final String value;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(18.0, 18.0, 18.0, 0),
-      child: Card(
-        elevation: 5.0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            vertical: 15.0,
-            horizontal: 25.0,
-          ),
-          child: Text(
-            '1 $cryptoCurrency = $value $currency',
-            style: TextStyle(fontSize: 20.0),
-          ),
-        ),
-      ),
     );
   }
 }
