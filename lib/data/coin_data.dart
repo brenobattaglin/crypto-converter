@@ -1,6 +1,11 @@
 import 'dart:convert';
 
+import 'package:crypto_font_icons/crypto_font_icon_data.dart';
+import 'package:crypto_font_icons/crypto_font_icons.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+
+//TODO: This is a mess, clean it up.
 
 const List<String> currenciesList = [
   'AUD',
@@ -26,10 +31,22 @@ const List<String> currenciesList = [
   'ZAR'
 ];
 
-const List<String> cryptoList = [
-  'BTC',
-  'ETH',
-  'LTC',
+class CryptoCurrency {
+  final String name;
+  final CryptoFontIconData icon;
+  String? price;
+
+  CryptoCurrency({
+    required this.name,
+    required this.icon,
+    required String? price,
+  });
+}
+
+List<CryptoCurrency> cryptoCurrencies = [
+  CryptoCurrency(name: 'BTC', icon: CryptoFontIcons.BTC, price: '??'),
+  CryptoCurrency(name: 'ETH', icon: CryptoFontIcons.ETH, price: '??'),
+  CryptoCurrency(name: 'LTC', icon: CryptoFontIcons.LTC, price: '??'),
 ];
 
 const coinAPIURL = 'rest.coinapi.io';
@@ -37,11 +54,10 @@ const APIKey = 'YOUR-API-HERE';
 
 class CoinData {
   Future getCoinData(String currency) async {
-    Map<String, String> cryptoPrices = {};
-    for (String crypto in cryptoList) {
+    for (CryptoCurrency crypto in cryptoCurrencies) {
       Uri requestUrl = Uri.https(
         coinAPIURL,
-        '/v1/exchangerate/$crypto/$currency',
+        '/v1/exchangerate/${crypto.name}/$currency',
         {'apikey': APIKey},
       );
       print(requestUrl);
@@ -50,12 +66,12 @@ class CoinData {
       if (response.statusCode == 200) {
         var decodedData = jsonDecode(response.body);
         double price = decodedData['rate'];
-        cryptoPrices[crypto] = price.toStringAsFixed(0);
+        crypto.price = price.toStringAsFixed(0);
       } else {
         print(response.statusCode);
         throw 'Problem with the get request';
       }
     }
-    return cryptoPrices;
+    return cryptoCurrencies;
   }
 }
