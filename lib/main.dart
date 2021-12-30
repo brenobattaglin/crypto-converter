@@ -1,16 +1,11 @@
+import 'package:bloc/bloc.dart';
+import 'package:crypto_price_tracker/app.dart';
+import 'package:crypto_price_tracker/observer.dart';
 import 'package:flutter/material.dart';
-import 'presentation/presentation.dart';
 
 void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData.dark(),
-      home: CryptoPage(),
-    );
-  }
+  BlocOverrides.runZoned(
+    () => runApp(const App()),
+    blocObserver: Observer(),
+  );
 }

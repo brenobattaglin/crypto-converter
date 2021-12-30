@@ -16,12 +16,20 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Cryptocurrency Converter',
       theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: const Color(0xff2F3543),
+        scaffoldBackgroundColor: const Color(0xff2e3440),
         appBarTheme: const AppBarTheme(
           color: Colors.transparent,
           elevation: 0,
         ),
-        primaryColor: const Color(0xff2F3543),
+        primaryColor: const Color(0xff2e3440),
+        cardTheme: CardTheme().copyWith(
+          color: const Color(0xff2e3440),
+          shadowColor: Colors.transparent,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.zero,
+          ),
+        ),
+        cardColor: const Color(0xff2e3440),
         floatingActionButtonTheme: const FloatingActionButtonThemeData(
           backgroundColor: Color(0xffeceff4),
         ),
