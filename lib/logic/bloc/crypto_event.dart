@@ -7,8 +7,4 @@ abstract class CryptoEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class CryptoLoadInProgress extends CryptoEvent {}
-
-class CryptoLoadSuccess extends CryptoEvent {}
-
-class CryptoLoadFailed extends CryptoEvent {}
+class CryptoLoadStarted extends CryptoEvent {}

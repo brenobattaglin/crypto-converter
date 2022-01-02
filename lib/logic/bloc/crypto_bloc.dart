@@ -6,8 +6,10 @@ part 'crypto_state.dart';
 
 class CryptoBloc extends Bloc<CryptoEvent, CryptoState> {
   CryptoBloc() : super(CryptoInitial()) {
-    on<CryptoEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<CryptoLoadStarted>(_onCryptoLoadStarted);
+  }
+
+  void _onCryptoLoadStarted(CryptoLoadStarted event, Emitter<CryptoState> emit) {
+    emit(CryptoLoadSuccess());
   }
 }
