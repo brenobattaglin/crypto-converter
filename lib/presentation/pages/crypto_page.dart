@@ -1,9 +1,11 @@
 import 'package:crypto_price_tracker/data/coin_data.dart';
+import 'package:crypto_price_tracker/data/data.dart';
 import 'package:crypto_price_tracker/presentation/presentation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
 
+//TODO: refactor this file
 class CryptoPage extends StatefulWidget {
   @override
   _CryptoPageState createState() => _CryptoPageState();
@@ -13,7 +15,7 @@ class _CryptoPageState extends State<CryptoPage> {
   String selectedCurrency = 'USD';
   CoinData coinData = CoinData();
   bool isWaiting = false;
-  Map<String, String> coinValues = {};
+  List<CryptoCurrency> coins = [];
 
   @override
   void initState() {
@@ -50,7 +52,7 @@ class _CryptoPageState extends State<CryptoPage> {
       var data = await CoinData().getCoinData(selectedCurrency);
       isWaiting = false;
       setState(() {
-        coinValues = data;
+        coins = data;
       });
     } catch (e) {
       print(e);
@@ -76,17 +78,17 @@ class _CryptoPageState extends State<CryptoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Crypto Price Tracker'),
+        title: const Text('Crypto Price Tracker'),
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           makeCards(),
           Container(
             height: 150,
             alignment: Alignment.center,
-            padding: EdgeInsets.only(bottom: 30.0),
+            padding: const EdgeInsets.only(bottom: 30.0),
             child: Platform.isIOS ? getIosPicker() : getAndroidDropdown(),
           ),
         ],
@@ -96,12 +98,12 @@ class _CryptoPageState extends State<CryptoPage> {
 
   Column makeCards() {
     List<CryptoCardWidget> cryptoCards = [];
-    for (String crypto in cryptoList) {
+    for (CryptoCurrency crypto in cryptocurrencies) {
       cryptoCards.add(
         CryptoCardWidget(
           cryptoCurrency: crypto,
           currency: selectedCurrency,
-          value: isWaiting ? '??' : coinValues[crypto],
+          value: isWaiting ? '??' : crypto.price,
         ),
       );
     }

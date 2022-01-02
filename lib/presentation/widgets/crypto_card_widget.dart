@@ -1,9 +1,12 @@
+import 'package:crypto_price_tracker/data/data.dart';
 import 'package:flutter/material.dart';
+
+//TODO: refactor this file
 
 class CryptoCardWidget extends StatelessWidget {
   const CryptoCardWidget({required this.cryptoCurrency, required this.currency, required this.value});
 
-  final String cryptoCurrency;
+  final CryptoCurrency cryptoCurrency;
   final String currency;
   final String? value;
 
@@ -17,13 +20,18 @@ class CryptoCardWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             vertical: 15.0,
             horizontal: 25.0,
           ),
-          child: Text(
-            '1 $cryptoCurrency = $value $currency',
-            style: TextStyle(fontSize: 20.0),
+          child: Row(
+            children: [
+              Icon(cryptoCurrency.icon),
+              Text(
+                '1 ${cryptoCurrency.name} = $value $currency',
+                style: const TextStyle(fontSize: 20.0),
+              ),
+            ],
           ),
         ),
       ),
