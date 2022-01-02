@@ -31,19 +31,7 @@ const List<String> currenciesList = [
   'ZAR'
 ];
 
-class CryptoCurrency {
-  final String name;
-  final CryptoFontIconData icon;
-  String? price;
-
-  CryptoCurrency({
-    required this.name,
-    required this.icon,
-    required String? price,
-  });
-}
-
-List<CryptoCurrency> cryptoCurrencies = [
+List<CryptoCurrency> cryptocurrencies = [
   CryptoCurrency(name: 'BTC', icon: CryptoFontIcons.BTC, price: '??'),
   CryptoCurrency(name: 'ETH', icon: CryptoFontIcons.ETH, price: '??'),
   CryptoCurrency(name: 'LTC', icon: CryptoFontIcons.LTC, price: '??'),
