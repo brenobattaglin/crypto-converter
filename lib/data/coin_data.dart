@@ -1,11 +1,7 @@
 import 'dart:convert';
-
-import 'package:crypto_font_icons/crypto_font_icon_data.dart';
 import 'package:crypto_font_icons/crypto_font_icons.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-
-//TODO: This is a mess, clean it up.
+import 'data.dart';
 
 const List<String> currenciesList = [
   'AUD',
@@ -42,7 +38,7 @@ const APIKey = 'YOUR-API-HERE';
 
 class CoinData {
   Future getCoinData(String currency) async {
-    for (CryptoCurrency crypto in cryptoCurrencies) {
+    for (CryptoCurrency crypto in cryptocurrencies) {
       Uri requestUrl = Uri.https(
         coinAPIURL,
         '/v1/exchangerate/${crypto.name}/$currency',
@@ -60,6 +56,6 @@ class CoinData {
         throw 'Problem with the get request';
       }
     }
-    return cryptoCurrencies;
+    return cryptocurrencies;
   }
 }
