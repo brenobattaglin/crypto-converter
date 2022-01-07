@@ -1,5 +1,4 @@
 import 'package:crypto_price_tracker/data/coin_data.dart';
-import 'package:crypto_price_tracker/data/data.dart';
 import 'package:crypto_price_tracker/presentation/presentation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

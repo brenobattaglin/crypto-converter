@@ -12,8 +12,6 @@ dependencies:
   bloc: ^8.0.0
   flutter_bloc: ^8.0.0
   equatable: ^2.0.3
-  http: ^0.13.1
-  crypto_font_icons: ^1.0.1
 
 dev_dependencies:
   flutter_test:

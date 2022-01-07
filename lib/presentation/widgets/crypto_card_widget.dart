@@ -1,4 +1,3 @@
-import 'package:crypto_price_tracker/data/data.dart';
 import 'package:flutter/material.dart';
 
 //TODO: refactor this file
