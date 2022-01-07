@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'exchange_rate.g.dart';
 
-enum Cryptocurrency {
+enum CurrencyIdBase {
   @JsonValue('BTC')
   bitcoin,
   @JsonValue('ETH')
@@ -11,11 +11,11 @@ enum Cryptocurrency {
   litecoin,
 }
 
-extension CryptocurrencyX on Cryptocurrency {
-  String? get abbr => _$CryptocurrencyEnumMap[this];
+extension CurrencyIdBaseX on CurrencyIdBase {
+  String? get abbr => _$CurrencyIdBaseEnumMap[this];
 }
 
-enum Currency {
+enum CurrencyIdQuote {
   @JsonValue('AUD')
   australianDollar,
   @JsonValue('BRL')
@@ -60,8 +60,8 @@ enum Currency {
   southAfricanRand
 }
 
-extension CurrencyX on Currency {
-  String? get abbr => _$CurrencyEnumMap[this];
+extension CurrencyIdQuoteX on CurrencyIdQuote {
+  String? get abbr => _$CurrencyIdQuoteEnumMap[this];
 }
 
 @JsonSerializable()
@@ -69,9 +69,9 @@ class ExchangeRate {
   @JsonKey(name: 'time')
   final String time;
   @JsonKey(name: 'asset_id_base')
-  final Cryptocurrency assetIdBase;
+  final CurrencyIdBase assetIdBase;
   @JsonKey(name: 'asset_id_quote')
-  final Currency assetIdQuote;
+  final CurrencyIdQuote assetIdQuote;
   @JsonKey(name: 'rate')
   final double rate;
 

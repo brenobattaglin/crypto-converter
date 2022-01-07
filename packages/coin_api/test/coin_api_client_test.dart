@@ -90,8 +90,8 @@ void main() {
           actual,
           isA<ExchangeRate>()
               .having((exr) => exr.time, 'title', 'mock-title')
-              .having((exr) => exr.assetIdBase, 'asset_id_base', Cryptocurrency.ethereum)
-              .having((exr) => exr.assetIdQuote, 'asset_id_quote', Currency.usDollar)
+              .having((exr) => exr.assetIdBase, 'asset_id_base', CurrencyIdBase.ethereum)
+              .having((exr) => exr.assetIdQuote, 'asset_id_quote', CurrencyIdQuote.usDollar)
               .having((exr) => exr.rate, 'rate', 42),
         );
       });

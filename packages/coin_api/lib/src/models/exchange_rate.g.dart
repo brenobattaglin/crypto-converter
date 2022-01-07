@@ -16,9 +16,9 @@ ExchangeRate _$ExchangeRateFromJson(Map<String, dynamic> json) =>
         final val = ExchangeRate(
           time: $checkedConvert('time', (v) => v as String),
           assetIdBase: $checkedConvert(
-              'asset_id_base', (v) => $enumDecode(_$CryptocurrencyEnumMap, v)),
-          assetIdQuote: $checkedConvert(
-              'asset_id_quote', (v) => $enumDecode(_$CurrencyEnumMap, v)),
+              'asset_id_base', (v) => $enumDecode(_$CurrencyIdBaseEnumMap, v)),
+          assetIdQuote: $checkedConvert('asset_id_quote',
+              (v) => $enumDecode(_$CurrencyIdQuoteEnumMap, v)),
           rate: $checkedConvert('rate', (v) => (v as num).toDouble()),
         );
         return val;
@@ -29,32 +29,32 @@ ExchangeRate _$ExchangeRateFromJson(Map<String, dynamic> json) =>
       },
     );
 
-const _$CryptocurrencyEnumMap = {
-  Cryptocurrency.bitcoin: 'BTC',
-  Cryptocurrency.ethereum: 'ETH',
-  Cryptocurrency.litecoin: 'LTC',
+const _$CurrencyIdBaseEnumMap = {
+  CurrencyIdBase.bitcoin: 'BTC',
+  CurrencyIdBase.ethereum: 'ETH',
+  CurrencyIdBase.litecoin: 'LTC',
 };
 
-const _$CurrencyEnumMap = {
-  Currency.australianDollar: 'AUD',
-  Currency.brazilianReal: 'BRL',
-  Currency.canadianDollar: 'CAD',
-  Currency.chineseYuan: 'CNY',
-  Currency.euro: 'EUR',
-  Currency.greatBritishPound: 'GBP',
-  Currency.hongKongDollar: 'HKD',
-  Currency.indonesianRupiah: 'IDR',
-  Currency.israeliShekel: 'ILS',
-  Currency.indianRupee: 'INR',
-  Currency.japaneseYen: 'JPY',
-  Currency.mexicanPeso: 'MXN',
-  Currency.norwegianKroner: 'NOK',
-  Currency.newZealandDollar: 'NZD',
-  Currency.polishZloty: 'PLN',
-  Currency.romaniaNewLei: 'RON',
-  Currency.russianRuble: 'RUB',
-  Currency.swedishKrona: 'SEK',
-  Currency.singaporeDollar: 'SGD',
-  Currency.usDollar: 'USD',
-  Currency.southAfricanRand: 'ZAR',
+const _$CurrencyIdQuoteEnumMap = {
+  CurrencyIdQuote.australianDollar: 'AUD',
+  CurrencyIdQuote.brazilianReal: 'BRL',
+  CurrencyIdQuote.canadianDollar: 'CAD',
+  CurrencyIdQuote.chineseYuan: 'CNY',
+  CurrencyIdQuote.euro: 'EUR',
+  CurrencyIdQuote.greatBritishPound: 'GBP',
+  CurrencyIdQuote.hongKongDollar: 'HKD',
+  CurrencyIdQuote.indonesianRupiah: 'IDR',
+  CurrencyIdQuote.israeliShekel: 'ILS',
+  CurrencyIdQuote.indianRupee: 'INR',
+  CurrencyIdQuote.japaneseYen: 'JPY',
+  CurrencyIdQuote.mexicanPeso: 'MXN',
+  CurrencyIdQuote.norwegianKroner: 'NOK',
+  CurrencyIdQuote.newZealandDollar: 'NZD',
+  CurrencyIdQuote.polishZloty: 'PLN',
+  CurrencyIdQuote.romaniaNewLei: 'RON',
+  CurrencyIdQuote.russianRuble: 'RUB',
+  CurrencyIdQuote.swedishKrona: 'SEK',
+  CurrencyIdQuote.singaporeDollar: 'SGD',
+  CurrencyIdQuote.usDollar: 'USD',
+  CurrencyIdQuote.southAfricanRand: 'ZAR',
 };
