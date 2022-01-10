@@ -1,5 +1,5 @@
-name: crypto_price_tracker
-description: A cryptocurrency price tracker
+name: crypto_converter
+description: A cryptocurrency converter
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
@@ -12,6 +12,12 @@ dependencies:
   bloc: ^8.0.0
   flutter_bloc: ^8.0.0
   equatable: ^2.0.3
+  google_fonts: ^2.2.0
+  hydrated_bloc: ^8.0.0
+  json_annotation: ^4.4.0
+  path_provider: ^2.0.3
+  coin_repository:
+    path: packages/coin_repository
 
 dev_dependencies:
   flutter_test:
@@ -19,6 +25,11 @@ dev_dependencies:
   bloc_test: ^9.0.1  
   mocktail: ^0.2.0
   flutter_lints: ^1.0.4
+  build_runner: ^2.1.7
+  json_serializable: ^6.1.3
+
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/
