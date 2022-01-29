@@ -1,38 +1,45 @@
+import 'package:crypto_font_icons/crypto_font_icon_data.dart';
 import 'package:flutter/material.dart';
 
-//TODO: refactor this file
+class CryptocurrencyCardWidget extends StatelessWidget {
+  final Color backgroundColor;
+  final String name;
+  final IconData icon;
+  final double rate;
+  final String abbr;
 
-class CryptoCardWidget extends StatelessWidget {
-  const CryptoCardWidget({required this.cryptoCurrency, required this.currency, required this.value});
-
-  final CryptoCurrency cryptoCurrency;
-  final String currency;
-  final String? value;
+  const CryptocurrencyCardWidget(
+      {Key? key,
+      required this.abbr,
+      required this.rate,
+      required this.name,
+      required this.icon,
+      required this.backgroundColor})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(18.0, 18.0, 18.0, 0),
-      child: Card(
-        elevation: 5.0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 15.0,
-            horizontal: 25.0,
+    return Card(
+      color: backgroundColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30.0),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          RichText(
+            text: TextSpan(children: [
+              WidgetSpan(
+                  child: Icon(
+                icon,
+                size: 17,
+              )),
+              TextSpan(text: ' $name')
+            ]),
           ),
-          child: Row(
-            children: [
-              Icon(cryptoCurrency.icon),
-              Text(
-                '1 ${cryptoCurrency.name} = $value $currency',
-                style: const TextStyle(fontSize: 20.0),
-              ),
-            ],
-          ),
-        ),
+          Text(rate.toString(), style: Theme.of(context).textTheme.headline3),
+          Text(abbr, style: Theme.of(context).textTheme.headline6),
+        ],
       ),
     );
   }
