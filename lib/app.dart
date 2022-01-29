@@ -14,7 +14,7 @@ class App extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Cryptocurrency Converter',
+      title: 'converter',
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: const Color(0xff2e3440),
         appBarTheme: const AppBarTheme(
@@ -22,6 +22,10 @@ class App extends StatelessWidget {
           elevation: 0,
         ),
         primaryColor: const Color(0xff2e3440),
+        textTheme: TextTheme().copyWith(
+          headline3: const TextStyle(fontWeight: FontWeight.w100),
+          bodyText1: const TextStyle(fontWeight: FontWeight.w100),
+        ),
         cardTheme: CardTheme().copyWith(
           color: const Color(0xff2e3440),
           shadowColor: Colors.transparent,
@@ -34,7 +38,7 @@ class App extends StatelessWidget {
           backgroundColor: Color(0xffeceff4),
         ),
       ),
-      home: CryptoPage(),
+      home: HomePage(),
     );
   }
 }
