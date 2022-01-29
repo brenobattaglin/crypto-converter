@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:html';
 import 'package:coin_api/coin_api.dart' hide ExchangeRate;
 import 'package:coin_repository/coin_repository.dart';
 
