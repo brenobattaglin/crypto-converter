@@ -1,6 +1,6 @@
-name: crypto_converter
+name: cryptocurrency_converter
 description: A cryptocurrency converter
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
@@ -18,18 +18,16 @@ dependencies:
   path_provider: ^2.0.3
   coin_repository:
     path: packages/coin_repository
+  crypto_font_icons: ^1.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  bloc_test: ^9.0.1  
+  bloc_test: ^9.0.1
   mocktail: ^0.2.0
   flutter_lints: ^1.0.4
   build_runner: ^2.1.7
   json_serializable: ^6.1.3
 
-
 flutter:
   uses-material-design: true
-  assets:
-    - assets/

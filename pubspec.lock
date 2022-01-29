@@ -191,7 +191,7 @@ packages:
     source: hosted
     version: "3.0.1"
   crypto_font_icons:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: crypto_font_icons
       url: "https://pub.dartlang.org"

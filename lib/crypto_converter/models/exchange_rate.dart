@@ -1,17 +1,17 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:coin_repository/coin_repository.dart' as coin_repository;
 
-part 'exchange_rate.g.dart';
-
 @JsonSerializable()
 class ExchangeRate {
-  const ExchangeRate({
-    this.cryptocurrency,
-    this.currency,
-    this.rate,
-  });
+  final coin_repository.Cryptocurrency cryptocurrency;
+  final coin_repository.Currency currency;
+  final double rate;
 
-  factory ExchangeRate.fromJson(Map<String, dynamic> json) => _$ExchangeRateFromJson(json);
+  const ExchangeRate({
+    required this.cryptocurrency,
+    required this.currency,
+    required this.rate,
+  });
 
   factory ExchangeRate.fromRepository(coin_repository.ExchangeRate exchangeRate) {
     return ExchangeRate(
