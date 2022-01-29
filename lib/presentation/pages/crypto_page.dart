@@ -1,5 +1,6 @@
 import 'package:crypto_font_icons/crypto_font_icon_data.dart';
 import 'package:crypto_font_icons/crypto_font_icons.dart';
+import 'package:cryptocurrency_converter/app.dart';
 import 'package:cryptocurrency_converter/presentation/widgets/crypto_card_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,12 +15,12 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Converter', style: TextStyle(fontSize: 15)),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            _buildCryptoCurrencyList(context),
-          ],
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[_buildCryptoCurrencyList(context), const CurrencyListWidget()],
+          ),
         ),
       ),
     );
@@ -31,11 +32,26 @@ class HomePage extends StatelessWidget {
         crossAxisCount: 2,
         children: const [
           CryptocurrencyCardWidget(
-              abbr: 'BTC', rate: 9.70, name: 'Bitcoin', icon: CryptoFontIcons.BTC, backgroundColor: Color(0xFFC08F53)),
+            abbr: 'BTC',
+            rate: 9.70,
+            name: 'Bitcoin',
+            icon: CryptoFontIcons.BTC,
+            backgroundColor: Color(0xFFC08F53),
+          ),
           CryptocurrencyCardWidget(
-              abbr: 'ETH', rate: 9.70, name: 'Ethereum', icon: CryptoFontIcons.ETH, backgroundColor: Color(0xFF737376)),
+            abbr: 'ETH',
+            rate: 9.70,
+            name: 'Ethereum',
+            icon: CryptoFontIcons.ETH,
+            backgroundColor: Color(0xFF737376),
+          ),
           CryptocurrencyCardWidget(
-              abbr: 'LTC', rate: 9.70, name: 'Litecoin', icon: CryptoFontIcons.LTC, backgroundColor: Color(0xFF828587)),
+            abbr: 'LTC',
+            rate: 9.70,
+            name: 'Litecoin',
+            icon: CryptoFontIcons.LTC,
+            backgroundColor: Color(0xFF828587),
+          ),
           CryptocurrencyCardWidget(
               abbr: 'DOGE',
               rate: 9.70,
@@ -47,6 +63,41 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+class CurrencyListWidget extends StatefulWidget {
+  const CurrencyListWidget({Key? key}) : super(key: key);
+
+  @override
+  State<CurrencyListWidget> createState() => _CurrencyListWidgetState();
+}
+
+class _CurrencyListWidgetState extends State<CurrencyListWidget> {
+  String dropdownValue = 'BRL';
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButton<String>(
+      value: dropdownValue,
+      icon: const Icon(Icons.circle_outlined),
+      style: const TextStyle(color: Nord0),
+      borderRadius: BorderRadius.circular(10),
+      underline: Container(
+        height: 2,
+      ),
+      onChanged: (String? newValue) {
+        setState(() {
+          dropdownValue = newValue!;
+        });
+      },
+      items: <String>['BRL - Brazilian Real', 'USD', 'EUR'].map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(),
+    );
+  }
+}
+
 
 // //TODO: refactor this file
 // class CryptoPage extends StatefulWidget {
