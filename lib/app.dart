@@ -3,6 +3,10 @@ import 'package:flutter/services.dart';
 
 import 'presentation/presentation.dart';
 
+const Nord0 = const Color(0xFF2E3440);
+const Nord4 = const Color(0xFFECEFF4);
+const defaultFontWeight = FontWeight.w100;
+
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
 
@@ -15,30 +19,32 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'converter',
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: const Color(0xff2e3440),
+      theme: ThemeData.light().copyWith(
+        scaffoldBackgroundColor: Nord4,
         appBarTheme: const AppBarTheme(
           color: Colors.transparent,
           elevation: 0,
-        ),
-        primaryColor: const Color(0xff2e3440),
-        textTheme: TextTheme().copyWith(
-          headline3: const TextStyle(fontWeight: FontWeight.w100),
-          bodyText1: const TextStyle(fontWeight: FontWeight.w100),
-        ),
-        cardTheme: CardTheme().copyWith(
-          color: const Color(0xff2e3440),
-          shadowColor: Colors.transparent,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.zero,
+          titleTextStyle: TextStyle(
+            color: Nord0,
           ),
         ),
-        cardColor: const Color(0xff2e3440),
-        floatingActionButtonTheme: const FloatingActionButtonThemeData(
-          backgroundColor: Color(0xffeceff4),
+        primaryColor: Nord4,
+        textTheme: const TextTheme().copyWith(
+          headline3: const TextStyle(
+            fontWeight: defaultFontWeight,
+          ),
+          bodyText1: const TextStyle(
+            fontWeight: defaultFontWeight,
+          ),
+        ),
+        cardTheme: const CardTheme().copyWith(
+          shadowColor: Colors.transparent,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30.0),
+          ),
         ),
       ),
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }
