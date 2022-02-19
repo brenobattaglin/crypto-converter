@@ -3,8 +3,8 @@ import 'package:flutter/services.dart';
 
 import 'presentation/presentation.dart';
 
-const Nord0 = const Color(0xFF2E3440);
-const Nord4 = const Color(0xFFECEFF4);
+const Nord0 = Color(0xFF2E3440);
+const Nord4 = Color(0xFFECEFF4);
 const defaultFontWeight = FontWeight.w100;
 
 class App extends StatelessWidget {
@@ -12,10 +12,8 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-    ]);
-
+    _lockScreenOrientation();
+    _setStatusBarIconsColorToDark();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'converter',
@@ -35,6 +33,13 @@ class App extends StatelessWidget {
           ),
           bodyText1: const TextStyle(
             fontWeight: defaultFontWeight,
+            color: Nord0,
+            fontSize: 30,
+          ),
+          bodyText2: const TextStyle(
+            fontWeight: defaultFontWeight,
+            color: Nord0,
+            fontSize: 18,
           ),
         ),
         cardTheme: const CardTheme().copyWith(
@@ -46,5 +51,17 @@ class App extends StatelessWidget {
       ),
       home: const HomePage(),
     );
+  }
+
+  void _lockScreenOrientation() {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+  }
+
+  void _setStatusBarIconsColorToDark() {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarBrightness: Brightness.dark,
+    ));
   }
 }
