@@ -1,4 +1,5 @@
 import 'package:crypto_font_icons/crypto_font_icon_data.dart';
+import 'package:cryptocurrency_converter/app.dart';
 import 'package:flutter/material.dart';
 
 class CryptocurrencyCardWidget extends StatelessWidget {
@@ -30,6 +31,7 @@ class CryptocurrencyCardWidget extends StatelessWidget {
                   child: Icon(
                 icon,
                 size: 17,
+                color: Nord4,
               )),
               TextSpan(text: ' $name')
             ]),
