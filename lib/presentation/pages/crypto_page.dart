@@ -1,10 +1,10 @@
-import 'package:crypto_font_icons/crypto_font_icon_data.dart';
 import 'package:crypto_font_icons/crypto_font_icons.dart';
-import 'package:cryptocurrency_converter/app.dart';
 import 'package:cryptocurrency_converter/presentation/widgets/crypto_card_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'dart:io' show Platform;
+
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+
+RefreshController _refreshController = RefreshController(initialRefresh: false);
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,13 +16,18 @@ class HomePage extends StatelessWidget {
         title: const Text('Converter', style: TextStyle(fontSize: 15)),
       ),
       body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              _buildCryptoCurrencyList(context),
-              const DropdownButtonWidget(),
-            ],
+        child: SmartRefresher(
+          enablePullDown: true,
+          header: WaterDropHeader(),
+          controller: _refreshController,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                _buildCryptoCurrencyList(context),
+                const DropdownButtonWidget(),
+              ],
+            ),
           ),
         ),
       ),
@@ -34,6 +39,7 @@ class HomePage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: GridView.count(
+          primary: false,
           crossAxisCount: 2,
           children: const [
             CryptocurrencyCardWidget(

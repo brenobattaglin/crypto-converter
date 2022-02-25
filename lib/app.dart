@@ -61,7 +61,7 @@ class App extends StatelessWidget {
 
   void _setStatusBarIconsColorToDark() {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarBrightness: Brightness.dark,
+      statusBarBrightness: Brightness.light,
     ));
   }
 }
