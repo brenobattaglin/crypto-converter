@@ -1,15 +1,14 @@
-import 'package:crypto_font_icons/crypto_font_icon_data.dart';
 import 'package:cryptocurrency_converter/app.dart';
 import 'package:flutter/material.dart';
 
-class CryptocurrencyCardWidget extends StatelessWidget {
+class CryptoCardWidget extends StatelessWidget {
   final Color backgroundColor;
   final String name;
   final IconData icon;
   final double rate;
   final String abbr;
 
-  const CryptocurrencyCardWidget(
+  const CryptoCardWidget(
       {Key? key,
       required this.abbr,
       required this.rate,

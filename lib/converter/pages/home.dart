@@ -1,7 +1,6 @@
 import 'package:crypto_font_icons/crypto_font_icons.dart';
-import 'package:cryptocurrency_converter/presentation/widgets/crypto_card_widget.dart';
+import 'package:cryptocurrency_converter/converter/converter.dart';
 import 'package:flutter/material.dart';
-
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 RefreshController _refreshController = RefreshController(initialRefresh: false);
@@ -42,28 +41,28 @@ class HomePage extends StatelessWidget {
           primary: false,
           crossAxisCount: 2,
           children: const [
-            CryptocurrencyCardWidget(
+            CryptoCardWidget(
               abbr: 'BTC',
               rate: 9.70,
               name: 'Bitcoin',
               icon: CryptoFontIcons.BTC,
               backgroundColor: Color(0xFFC08F53),
             ),
-            CryptocurrencyCardWidget(
+            CryptoCardWidget(
               abbr: 'ETH',
               rate: 9.70,
               name: 'Ethereum',
               icon: CryptoFontIcons.ETH,
               backgroundColor: Color(0xFF737376),
             ),
-            CryptocurrencyCardWidget(
+            CryptoCardWidget(
               abbr: 'LTC',
               rate: 9.70,
               name: 'Litecoin',
               icon: CryptoFontIcons.LTC,
               backgroundColor: Color(0xFF828587),
             ),
-            CryptocurrencyCardWidget(
+            CryptoCardWidget(
                 abbr: 'DOGE',
                 rate: 9.70,
                 name: 'Dogecoin',
