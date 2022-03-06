@@ -1,12 +1,24 @@
 import 'package:crypto_font_icons/crypto_font_icons.dart';
+import 'package:cryptocurrency_converter/app.dart';
 import 'package:cryptocurrency_converter/converter/converter.dart';
+import 'package:cryptocurrency_converter/converter/cubit/converter_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 RefreshController _refreshController = RefreshController(initialRefresh: false);
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(create: (context) => ConverterCubit(), child: const HomeView());
+  }
+}
+
+class HomeView extends StatelessWidget {
+  const HomeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -94,6 +106,7 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
           ),
           DropdownButtonHideUnderline(
             child: DropdownButton(
+              dropdownColor: Nord0,
               value: dropdownValue,
               icon: const Icon(Icons.arrow_downward),
               items: <String>['BRL', 'USD', 'EUR'].map<DropdownMenuItem<String>>((String value) {
