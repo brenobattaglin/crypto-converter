@@ -3,7 +3,9 @@ import 'package:flutter/services.dart';
 import 'converter/converter.dart';
 
 const Nord0 = Color(0xFF2E3440);
+const Nord3 = Color(0xFF4C566A);
 const Nord4 = Color(0xFFECEFF4);
+
 const defaultFontWeight = FontWeight.w100;
 
 class App extends StatelessWidget {
@@ -16,28 +18,29 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'converter',
-      theme: ThemeData.light().copyWith(
-        scaffoldBackgroundColor: Nord4,
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: Nord3,
         appBarTheme: const AppBarTheme(
           color: Colors.transparent,
           elevation: 0,
           titleTextStyle: TextStyle(
-            color: Nord0,
+            color: Nord4,
           ),
         ),
         primaryColor: Nord4,
         textTheme: const TextTheme().copyWith(
           headline3: const TextStyle(
             fontWeight: defaultFontWeight,
+            color: Nord4,
           ),
           bodyText1: const TextStyle(
             fontWeight: defaultFontWeight,
-            color: Nord0,
+            color: Nord4,
             fontSize: 30,
           ),
           bodyText2: const TextStyle(
             fontWeight: defaultFontWeight,
-            color: Nord0,
+            color: Nord4,
             fontSize: 18,
           ),
         ),

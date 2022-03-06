@@ -2,25 +2,23 @@ import 'package:cryptocurrency_converter/app.dart';
 import 'package:flutter/material.dart';
 
 class CryptoCardWidget extends StatelessWidget {
-  final Color backgroundColor;
   final String name;
   final IconData icon;
   final double rate;
   final String abbr;
 
-  const CryptoCardWidget(
-      {Key? key,
-      required this.abbr,
-      required this.rate,
-      required this.name,
-      required this.icon,
-      required this.backgroundColor})
-      : super(key: key);
+  const CryptoCardWidget({
+    Key? key,
+    required this.abbr,
+    required this.rate,
+    required this.name,
+    required this.icon,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: backgroundColor,
+      color: Nord0,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [

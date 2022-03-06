@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
       body: SafeArea(
         child: SmartRefresher(
           enablePullDown: true,
-          header: WaterDropHeader(),
+          header: const WaterDropHeader(),
           controller: _refreshController,
           child: Center(
             child: Column(
@@ -46,28 +46,25 @@ class HomePage extends StatelessWidget {
               rate: 9.70,
               name: 'Bitcoin',
               icon: CryptoFontIcons.BTC,
-              backgroundColor: Color(0xFFC08F53),
             ),
             CryptoCardWidget(
               abbr: 'ETH',
               rate: 9.70,
               name: 'Ethereum',
               icon: CryptoFontIcons.ETH,
-              backgroundColor: Color(0xFF737376),
             ),
             CryptoCardWidget(
               abbr: 'LTC',
               rate: 9.70,
               name: 'Litecoin',
               icon: CryptoFontIcons.LTC,
-              backgroundColor: Color(0xFF828587),
             ),
             CryptoCardWidget(
-                abbr: 'DOGE',
-                rate: 9.70,
-                name: 'Dogecoin',
-                icon: CryptoFontIcons.DOGE,
-                backgroundColor: Color(0xFF9E9057)),
+              abbr: 'DOGE',
+              rate: 9.70,
+              name: 'Dogecoin',
+              icon: CryptoFontIcons.DOGE,
+            ),
           ],
         ),
       ),
