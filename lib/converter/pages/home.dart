@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-RefreshController _refreshController = RefreshController(initialRefresh: false);
+RefreshController _refreshController = RefreshController(initialRefresh: true);
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -28,6 +28,7 @@ class HomeView extends StatelessWidget {
       ),
       body: SafeArea(
         child: SmartRefresher(
+          onRefresh: () async => await context.read<ConverterCubit>().fetchExchangeRate(),
           enablePullDown: true,
           header: const WaterDropHeader(),
           controller: _refreshController,
