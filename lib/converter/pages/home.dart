@@ -56,25 +56,25 @@ class HomeView extends StatelessWidget {
           children: const [
             CryptoCardWidget(
               abbr: 'BTC',
-              rate: 9.70,
+              rate: '--',
               name: 'Bitcoin',
               icon: CryptoFontIcons.BTC,
             ),
             CryptoCardWidget(
               abbr: 'ETH',
-              rate: 9.70,
+              rate: '--',
               name: 'Ethereum',
               icon: CryptoFontIcons.ETH,
             ),
             CryptoCardWidget(
               abbr: 'LTC',
-              rate: 9.70,
+              rate: '--',
               name: 'Litecoin',
               icon: CryptoFontIcons.LTC,
             ),
             CryptoCardWidget(
               abbr: 'DOGE',
-              rate: 9.70,
+              rate: '--',
               name: 'Dogecoin',
               icon: CryptoFontIcons.DOGE,
             ),

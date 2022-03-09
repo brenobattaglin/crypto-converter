@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class CryptoCardWidget extends StatelessWidget {
   final String name;
   final IconData icon;
-  final double rate;
+  final String rate;
   final String abbr;
 
   const CryptoCardWidget({
