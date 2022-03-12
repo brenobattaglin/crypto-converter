@@ -28,7 +28,14 @@ class HomeView extends StatelessWidget {
       ),
       body: SafeArea(
         child: SmartRefresher(
-          onRefresh: () async => await context.read<ConverterCubit>().fetchExchangeRate(),
+          onRefresh: () async {
+            final response = await context.read<ConverterCubit>().fetchExchangeRate();
+            if (response) {
+              _refreshController.refreshCompleted();
+            } else {
+              _refreshController.refreshFailed();
+            }
+          },
           enablePullDown: true,
           header: const WaterDropHeader(),
           controller: _refreshController,

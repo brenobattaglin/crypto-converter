@@ -14,5 +14,8 @@ class ConverterCubit extends HydratedCubit<ConverterState> {
   @override
   Map<String, dynamic>? toJson(ConverterState state) => state.toJson();
 
-  Future<void> fetchExchangeRate() async {}
+  Future<bool> fetchExchangeRate() async {
+    // TODO: Create request using the repository
+    return true;
+  }
 }
