@@ -14,7 +14,12 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (context) => ConverterCubit(context.read<CoinRepository>()), child: const HomeView());
+    return BlocProvider(
+      create: (context) => ConverterCubit(
+        context.read<CoinRepository>(),
+      ),
+      child: const HomeView(),
+    );
   }
 }
 

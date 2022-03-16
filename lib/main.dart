@@ -1,3 +1,4 @@
+import 'package:coin_repository/coin_repository.dart';
 import 'package:cryptocurrency_converter/app.dart';
 import 'package:cryptocurrency_converter/observer.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,7 @@ main() async {
   );
 
   HydratedBlocOverrides.runZoned(
-    () => runApp(const App()),
+    () => runApp(App(coinRepository: CoinRepository())),
     blocObserver: Observer(),
     storage: storage,
   );

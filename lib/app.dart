@@ -1,5 +1,7 @@
+import 'package:coin_repository/coin_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'converter/converter.dart';
 
 const Nord0 = Color(0xFF2E3440);
@@ -9,12 +11,44 @@ const Nord4 = Color(0xFFECEFF4);
 const defaultFontWeight = FontWeight.w100;
 
 class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
+  const App({
+    Key? key,
+    required CoinRepository coinRepository,
+  })  : _coinRepository = coinRepository,
+        super(key: key);
+
+  final CoinRepository _coinRepository;
 
   @override
   Widget build(BuildContext context) {
     _lockScreenOrientation();
     _setStatusBarIconsColorToDark();
+    return RepositoryProvider.value(
+      value: _coinRepository,
+      child: const ConverterAppView(),
+    );
+  }
+
+  void _lockScreenOrientation() {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+  }
+
+  void _setStatusBarIconsColorToDark() {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarBrightness: Brightness.light,
+    ));
+  }
+}
+
+class ConverterAppView extends StatelessWidget {
+  const ConverterAppView({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'converter',
@@ -53,17 +87,5 @@ class App extends StatelessWidget {
       ),
       home: const HomePage(),
     );
-  }
-
-  void _lockScreenOrientation() {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-    ]);
-  }
-
-  void _setStatusBarIconsColorToDark() {
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarBrightness: Brightness.light,
-    ));
   }
 }
