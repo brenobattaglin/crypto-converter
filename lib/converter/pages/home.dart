@@ -1,3 +1,4 @@
+import 'package:coin_repository/coin_repository.dart';
 import 'package:crypto_font_icons/crypto_font_icons.dart';
 import 'package:cryptocurrency_converter/app.dart';
 import 'package:cryptocurrency_converter/converter/converter.dart';
@@ -13,7 +14,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (context) => ConverterCubit(), child: const HomeView());
+    return BlocProvider(create: (context) => ConverterCubit(context.read<CoinRepository>()), child: const HomeView());
   }
 }
 

@@ -19,8 +19,16 @@ class ConverterState extends Equatable {
 
   Map<String, dynamic> toJson() => _$ConverterStateToJson(this);
 
+  ConverterState copyWith({
+    ConversionStatus? status,
+  }) {
+    return ConverterState(
+      status: status ?? this.status,
+    );
+  }
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [status];
 }
 
 class ConverterInitial extends ConverterState {}
