@@ -1,5 +1,6 @@
 import 'package:coin_repository/coin_repository.dart';
 import 'package:equatable/equatable.dart';
+import 'package:cryptocurrency_converter/converter/converter.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -17,20 +18,18 @@ class ConverterCubit extends HydratedCubit<ConverterState> {
   @override
   Map<String, dynamic>? toJson(ConverterState state) => state.toJson();
 
-  Future<bool> fetchExchangeRate() async {
+  Future<void> fetchExchangeRate() async {
     emit(state.copyWith(status: ConversionStatus.loading));
 
     try {
-      final response = await _coinRepository.getExchangeRate('BTH', 'BRL');
+      final response = ExchangeRate.fromRepository(await _coinRepository.getExchangeRate('BTH', 'BRL'));
 
       emit(state.copyWith(
         status: ConversionStatus.success,
+        exchangeRate: response,
       ));
     } on Exception {
       emit(state.copyWith(status: ConversionStatus.failure));
     }
-
-    // TODO: Create request using the repository
-    return true;
   }
 }

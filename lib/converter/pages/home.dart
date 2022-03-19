@@ -2,10 +2,11 @@ import 'package:coin_repository/coin_repository.dart';
 import 'package:crypto_font_icons/crypto_font_icons.dart';
 import 'package:cryptocurrency_converter/app.dart';
 import 'package:cryptocurrency_converter/converter/converter.dart';
-import 'package:cryptocurrency_converter/converter/cubit/converter_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+
+import '../converter.dart';
 
 RefreshController _refreshController = RefreshController(initialRefresh: true);
 
@@ -36,10 +37,11 @@ class HomeView extends StatelessWidget {
         child: SmartRefresher(
           onRefresh: () async {
             final response = await context.read<ConverterCubit>().fetchExchangeRate();
-            if (response) {
-              _refreshController.refreshCompleted();
-            } else {
+
+            if (context.read<ConverterCubit>().state.status == ConversionStatus.failure) {
               _refreshController.refreshFailed();
+            } else {
+              _refreshController.refreshCompleted();
             }
           },
           enablePullDown: true,

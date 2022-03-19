@@ -1,8 +1,9 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:coin_repository/coin_repository.dart' as coin_repository;
 
 @JsonSerializable()
-class ExchangeRate {
+class ExchangeRate extends Equatable {
   final coin_repository.Cryptocurrency cryptocurrency;
   final coin_repository.Currency currency;
   final double rate;
@@ -20,4 +21,7 @@ class ExchangeRate {
       rate: exchangeRate.rate,
     );
   }
+
+  @override
+  List<Object> get props => [cryptocurrency, currency, rate];
 }
