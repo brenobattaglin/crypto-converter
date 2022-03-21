@@ -4,12 +4,14 @@ import 'package:json_annotation/json_annotation.dart';
 part 'coin.g.dart';
 
 enum Cryptocurrency {
+  empty,
   bitcoin,
   ethereum,
   litecoin,
 }
 
 enum Currency {
+  empty,
   australianDollar,
   brazilianReal,
   canadianDollar,
