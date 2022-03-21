@@ -12,8 +12,10 @@ extension ConversionStatusX on ConversionStatus {
 @JsonSerializable()
 class ConverterState extends Equatable {
   final ConversionStatus status;
+  final ExchangeRate exchangeRate;
 
-  const ConverterState({this.status = ConversionStatus.initial});
+  const ConverterState({this.status = ConversionStatus.initial, ExchangeRate? exchangeRate})
+      : exchangeRate = exchangeRate ?? ExchangeRate.empty;
 
   factory ConverterState.fromJson(Map<String, dynamic> json) => _$ConverterStateFromJson(json);
 
@@ -21,9 +23,11 @@ class ConverterState extends Equatable {
 
   ConverterState copyWith({
     ConversionStatus? status,
+    ExchangeRate? exchangeRate,
   }) {
     return ConverterState(
       status: status ?? this.status,
+      exchangeRate: exchangeRate ?? this.exchangeRate,
     );
   }
 

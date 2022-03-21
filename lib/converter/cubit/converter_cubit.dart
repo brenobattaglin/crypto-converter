@@ -1,8 +1,8 @@
-import 'package:coin_repository/coin_repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:cryptocurrency_converter/converter/converter.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:coin_repository/coin_repository.dart' show CoinRepository;
 
 part 'converter_state.dart';
 part 'converter_cubit.g.dart';
