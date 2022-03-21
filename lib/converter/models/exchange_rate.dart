@@ -22,6 +22,12 @@ class ExchangeRate extends Equatable {
     );
   }
 
+  static const empty = ExchangeRate(
+    cryptocurrency: coin_repository.Cryptocurrency.empty,
+    currency: coin_repository.Currency.empty,
+    rate: 0.0,
+  );
+
   @override
   List<Object> get props => [cryptocurrency, currency, rate];
 }
