@@ -22,7 +22,9 @@ class ConverterCubit extends HydratedCubit<ConverterState> {
     emit(state.copyWith(status: ConversionStatus.loading));
 
     try {
-      final response = ExchangeRate.fromRepository(await _coinRepository.getExchangeRate('BTH', 'BRL'));
+      final response = ExchangeRate.fromRepository(
+        await _coinRepository.getExchangeRate('BTC', 'BRL'),
+      );
 
       emit(state.copyWith(
         status: ConversionStatus.success,

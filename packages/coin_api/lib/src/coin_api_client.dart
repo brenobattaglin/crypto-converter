@@ -20,10 +20,15 @@ class CoinApiClient {
     final request = Uri.https(
       _baseUrl,
       '/v1/exchangerate/${cryptocurrency}/$currency',
-      <String, String>{'apikey': _apiKey},
     );
 
-    final response = await _httpClient.get(request);
+    final response = await _httpClient.get(
+      request,
+      headers: {
+        'X-CoinAPI-Key': _apiKey,
+        'Accept-Encoding': 'deflate, gzip',
+      },
+    );
 
     if (response.statusCode != HttpStatus.ok) {
       throw ExchangeRateRequestFailure();
