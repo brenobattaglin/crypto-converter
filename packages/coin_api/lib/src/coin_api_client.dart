@@ -25,9 +25,9 @@ class CoinApiClient {
 
     final response = await _httpClient.get(request);
 
-    if (response.statusCode != 200) {
+    if (response.statusCode != HttpStatus.ok) {
       throw ExchangeRateRequestFailure();
-    } else if (response.statusCode == 404) {
+    } else if (response.statusCode == HttpStatus.notFound) {
       throw ExchangeRateNotFoundFailure();
     }
 
