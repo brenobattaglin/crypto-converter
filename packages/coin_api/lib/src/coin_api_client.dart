@@ -9,6 +9,8 @@ class ExchangeRateRequestFailure implements Exception {}
 
 class ExchangeRateNotFoundFailure implements Exception {}
 
+class ExchangeRateNoContentFailure implements Exception {}
+
 class CoinApiClient {
   static const _baseUrl = 'rest.coinapi.io';
   final String _apiKey = 'apikeyhere';
@@ -38,12 +40,12 @@ class CoinApiClient {
 
     final json = jsonDecode(
       response.body,
-    ) as List;
+    ) as Map;
 
     if (json.isEmpty) {
-      throw ExchangeRateRequestFailure();
+      throw ExchangeRateNoContentFailure();
     }
 
-    return ExchangeRate.fromJson(json.first as Map<String, dynamic>);
+    return ExchangeRate.fromJson(json as Map<String, dynamic>);
   }
 }

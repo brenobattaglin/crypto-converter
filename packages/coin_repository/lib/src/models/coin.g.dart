@@ -6,16 +6,13 @@ part of 'coin.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ExchangeRate _$ExchangeRateFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
+ExchangeRate _$ExchangeRateFromJson(Map<String, dynamic> json) => $checkedCreate(
       'ExchangeRate',
       json,
       ($checkedConvert) {
         final val = ExchangeRate(
-          cryptoCurrency: $checkedConvert('crypto_currency',
-              (v) => $enumDecode(_$CryptocurrencyEnumMap, v)),
-          currency: $checkedConvert(
-              'currency', (v) => $enumDecode(_$CurrencyEnumMap, v)),
+          cryptoCurrency: $checkedConvert('crypto_currency', (v) => $enumDecode(_$CryptocurrencyEnumMap, v)),
+          currency: $checkedConvert('currency', (v) => $enumDecode(_$CurrencyEnumMap, v)),
           rate: $checkedConvert('rate', (v) => (v as num).toDouble()),
         );
         return val;
@@ -23,17 +20,16 @@ ExchangeRate _$ExchangeRateFromJson(Map<String, dynamic> json) =>
       fieldKeyMap: const {'cryptoCurrency': 'crypto_currency'},
     );
 
-Map<String, dynamic> _$ExchangeRateToJson(ExchangeRate instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$ExchangeRateToJson(ExchangeRate instance) => <String, dynamic>{
       'crypto_currency': _$CryptocurrencyEnumMap[instance.cryptoCurrency],
       'currency': _$CurrencyEnumMap[instance.currency],
       'rate': instance.rate,
     };
 
 const _$CryptocurrencyEnumMap = {
-  Cryptocurrency.bitcoin: 'bitcoin',
-  Cryptocurrency.ethereum: 'ethereum',
-  Cryptocurrency.litecoin: 'litecoin',
+  Cryptocurrency.bitcoin: 'Bitcoin',
+  Cryptocurrency.ethereum: 'Ethereum',
+  Cryptocurrency.litecoin: 'Litecoin',
 };
 
 const _$CurrencyEnumMap = {
