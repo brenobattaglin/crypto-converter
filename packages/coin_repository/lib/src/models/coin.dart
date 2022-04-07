@@ -8,6 +8,7 @@ enum Cryptocurrency {
   bitcoin,
   ethereum,
   litecoin,
+  dogecoin,
 }
 
 enum Currency {

@@ -9,6 +9,8 @@ enum CurrencyIdBase {
   ethereum,
   @JsonValue('LTC')
   litecoin,
+  @JsonValue('DOGE')
+  dogecoin,
 }
 
 extension CurrencyIdBaseX on CurrencyIdBase {

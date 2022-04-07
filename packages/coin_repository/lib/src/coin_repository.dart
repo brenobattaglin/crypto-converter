@@ -28,6 +28,8 @@ extension on CurrencyIdBase {
         return Cryptocurrency.ethereum;
       case CurrencyIdBase.litecoin:
         return Cryptocurrency.litecoin;
+      case CurrencyIdBase.dogecoin:
+        return Cryptocurrency.dogecoin;
     }
   }
 }

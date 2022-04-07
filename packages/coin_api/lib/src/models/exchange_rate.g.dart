@@ -33,6 +33,7 @@ const _$CurrencyIdBaseEnumMap = {
   CurrencyIdBase.bitcoin: 'BTC',
   CurrencyIdBase.ethereum: 'ETH',
   CurrencyIdBase.litecoin: 'LTC',
+  CurrencyIdBase.dogecoin: 'DOGE',
 };
 
 const _$CurrencyIdQuoteEnumMap = {
