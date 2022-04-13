@@ -85,7 +85,10 @@ class ConverterAppView extends StatelessWidget {
           ),
         ),
       ),
-      home: const HomePage(),
+      home: BlocProvider(
+        create: (_) => ConverterCubit(context.read<CoinRepository>()),
+        child: const HomePage(),
+      ),
     );
   }
 }
