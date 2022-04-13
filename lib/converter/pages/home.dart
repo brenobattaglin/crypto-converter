@@ -1,4 +1,4 @@
-import 'package:coin_repository/coin_repository.dart';
+import 'package:coin_repository/coin_repository.dart' hide ExchangeRate;
 import 'package:crypto_font_icons/crypto_font_icons.dart';
 import 'package:cryptocurrency_converter/app.dart';
 import 'package:cryptocurrency_converter/converter/converter.dart';
@@ -10,23 +10,14 @@ import '../converter.dart';
 
 RefreshController _refreshController = RefreshController(initialRefresh: true);
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ConverterCubit(
-        context.read<CoinRepository>(),
-      ),
-      child: const HomeView(),
-    );
-  }
+  State<HomePage> createState() => _HomePageState();
 }
 
-class HomeView extends StatelessWidget {
-  const HomeView({Key? key}) : super(key: key);
-
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,26 +25,37 @@ class HomeView extends StatelessWidget {
         title: const Text('Converter', style: TextStyle(fontSize: 15)),
       ),
       body: SafeArea(
-        child: SmartRefresher(
-          onRefresh: () async {
-            final response = await context.read<ConverterCubit>().fetchExchangeRate();
-
-            if (context.read<ConverterCubit>().state.status == ConversionStatus.failure) {
+        child: BlocListener<ConverterCubit, ConverterState>(
+          listener: (context, state) {
+            if (state.status == ConversionStatus.failure) {
               _refreshController.refreshFailed();
             } else {
               _refreshController.refreshCompleted();
             }
           },
-          enablePullDown: true,
-          header: const WaterDropHeader(),
-          controller: _refreshController,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                _buildCryptoCurrencyList(context),
-                const DropdownButtonWidget(),
-              ],
+          child: SmartRefresher(
+            onRefresh: () async {
+              context.read<ConverterCubit>().fetchExchangeRate();
+            },
+            enablePullDown: true,
+            header: const WaterDropHeader(),
+            controller: _refreshController,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  BlocBuilder<ConverterCubit, ConverterState>(
+                    builder: (context, state) {
+                      if (state.status == ConversionStatus.success) {
+                        return _buildCryptoCurrencyList(context, state.exchangeRate);
+                      } else {
+                        return _buildCryptoCurrencyList(context);
+                      }
+                    },
+                  ),
+                  const DropdownButtonWidget(),
+                ],
+              ),
             ),
           ),
         ),
@@ -61,18 +63,19 @@ class HomeView extends StatelessWidget {
     );
   }
 
-  _buildCryptoCurrencyList(BuildContext context) {
+  _buildCryptoCurrencyList(BuildContext context, [ExchangeRate? exchangeRate]) {
+    print(exchangeRate?.cryptocurrency.name);
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: GridView.count(
           primary: false,
           crossAxisCount: 2,
-          children: const [
+          children: [
             CryptoCardWidget(
               abbr: 'BTC',
               rate: '--',
-              name: 'Bitcoin',
+              name: exchangeRate != null ? exchangeRate.cryptocurrency.name : '',
               icon: CryptoFontIcons.BTC,
             ),
             CryptoCardWidget(

@@ -27,12 +27,10 @@ class ConverterState extends Equatable {
   }) {
     return ConverterState(
       status: status ?? this.status,
-      exchangeRate: exchangeRate ?? this.exchangeRate,
+      exchangeRate: exchangeRate ?? ExchangeRate.empty,
     );
   }
 
   @override
   List<Object> get props => [status];
 }
-
-class ConverterInitial extends ConverterState {}
