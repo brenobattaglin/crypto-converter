@@ -14,8 +14,10 @@ class ConverterState extends Equatable {
   final ConversionStatus status;
   final ExchangeRate exchangeRate;
 
-  const ConverterState({this.status = ConversionStatus.initial, ExchangeRate? exchangeRate})
-      : exchangeRate = exchangeRate ?? ExchangeRate.empty;
+  ConverterState({
+    this.status = ConversionStatus.initial,
+    exchangeRate,
+  }) : exchangeRate = exchangeRate ?? ExchangeRate.empty;
 
   factory ConverterState.fromJson(Map<String, dynamic> json) => _$ConverterStateFromJson(json);
 
