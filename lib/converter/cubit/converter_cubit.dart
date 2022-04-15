@@ -8,7 +8,7 @@ part 'converter_state.dart';
 part 'converter_cubit.g.dart';
 
 class ConverterCubit extends HydratedCubit<ConverterState> {
-  ConverterCubit(this._coinRepository) : super(const ConverterState());
+  ConverterCubit(this._coinRepository) : super(ConverterState());
 
   final CoinRepository _coinRepository;
 
