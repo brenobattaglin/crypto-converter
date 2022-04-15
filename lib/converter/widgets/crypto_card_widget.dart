@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 
 class CryptoCardWidget extends StatelessWidget {
   final String name;
-  final IconData icon;
+  final IconData iconData;
   final String rate;
-  final String abbr;
+  final String code;
 
   const CryptoCardWidget({
     Key? key,
-    required this.abbr,
+    required this.code,
     required this.rate,
     required this.name,
-    required this.icon,
+    required this.iconData,
   }) : super(key: key);
 
   @override
@@ -25,16 +25,21 @@ class CryptoCardWidget extends StatelessWidget {
           RichText(
             text: TextSpan(children: [
               WidgetSpan(
-                  child: Icon(
-                icon,
-                size: 17,
-                color: Nord4,
-              )),
+                child: Icon(
+                  iconData,
+                  size: 17,
+                  color: Nord4,
+                ),
+              ),
               TextSpan(text: ' $name')
             ]),
           ),
-          Text(rate.toString(), style: Theme.of(context).textTheme.headline3),
-          Text(abbr, style: Theme.of(context).textTheme.headline6),
+          Text(
+            rate.toString(),
+            style: Theme.of(context).textTheme.headline3,
+            maxLines: 1,
+          ),
+          Text(code, style: Theme.of(context).textTheme.headline6),
         ],
       ),
     );
