@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
                 children: <Widget>[
                   BlocBuilder<ConverterCubit, ConverterState>(
                     builder: (context, state) {
-                      return _buildCryptoCurrencyList(context, state.exchangeRate);
+                      return _buildCryptoCurrencyList(context, state.exchangeRates);
                     },
                   ),
                   const DropdownButtonWidget(),
@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  _buildCryptoCurrencyList(BuildContext context, ExchangeRate exchangeRate) {
+  _buildCryptoCurrencyList(BuildContext context, List<ExchangeRate> exchangeRates) {
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -65,12 +65,13 @@ class _HomePageState extends State<HomePage> {
           primary: false,
           crossAxisCount: 2,
           children: [
-            CryptoCardWidget(
-              code: exchangeRate.cryptocurrency.code,
-              rate: exchangeRate.rate.toStringAsFixed(2),
-              name: exchangeRate.cryptocurrency.name,
-              iconData: exchangeRate.cryptocurrency.icon,
-            ),
+            for (var exchange in exchangeRates)
+              CryptoCardWidget(
+                code: exchange.cryptocurrency.code,
+                rate: exchange.rate.toStringAsFixed(2),
+                name: exchange.cryptocurrency.name,
+                iconData: exchange.cryptocurrency.icon,
+              )
           ],
         ),
       ),
