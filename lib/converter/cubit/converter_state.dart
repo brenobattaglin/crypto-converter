@@ -12,12 +12,20 @@ extension ConversionStatusX on ConversionStatus {
 @JsonSerializable()
 class ConverterState extends Equatable {
   final ConversionStatus status;
-  final ExchangeRate exchangeRate;
+  final List<ExchangeRate> exchangeRates;
 
   ConverterState({
     this.status = ConversionStatus.initial,
-    exchangeRate,
-  }) : exchangeRate = exchangeRate ?? ExchangeRate.empty;
+    exchangeRates,
+  }) : exchangeRates = exchangeRates ??
+            List<ExchangeRate>.unmodifiable(
+              [
+                ExchangeRate.empty,
+                ExchangeRate.empty,
+                ExchangeRate.empty,
+                ExchangeRate.empty,
+              ],
+            );
 
   factory ConverterState.fromJson(Map<String, dynamic> json) => _$ConverterStateFromJson(json);
 
@@ -25,14 +33,20 @@ class ConverterState extends Equatable {
 
   ConverterState copyWith({
     ConversionStatus? status,
-    ExchangeRate? exchangeRate,
+    List<ExchangeRate>? exchangeRates,
   }) {
     return ConverterState(
       status: status ?? this.status,
-      exchangeRate: exchangeRate ?? ExchangeRate.empty,
+      exchangeRates: exchangeRates ??
+          List<ExchangeRate>.unmodifiable([
+            ExchangeRate.empty,
+            ExchangeRate.empty,
+            ExchangeRate.empty,
+            ExchangeRate.empty,
+          ]),
     );
   }
 
   @override
-  List<Object> get props => [status];
+  List<Object> get props => [status, exchangeRates];
 }
