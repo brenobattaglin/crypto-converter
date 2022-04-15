@@ -1,5 +1,3 @@
-import 'package:coin_repository/coin_repository.dart' hide ExchangeRate;
-import 'package:crypto_font_icons/crypto_font_icons.dart';
 import 'package:cryptocurrency_converter/app.dart';
 import 'package:cryptocurrency_converter/converter/converter.dart';
 import 'package:flutter/material.dart';
@@ -46,11 +44,7 @@ class _HomePageState extends State<HomePage> {
                 children: <Widget>[
                   BlocBuilder<ConverterCubit, ConverterState>(
                     builder: (context, state) {
-                      if (state.status == ConversionStatus.success) {
-                        return _buildCryptoCurrencyList(context, state.exchangeRate);
-                      } else {
-                        return _buildCryptoCurrencyList(context);
-                      }
+                      return _buildCryptoCurrencyList(context, state.exchangeRate);
                     },
                   ),
                   const DropdownButtonWidget(),
@@ -63,8 +57,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  _buildCryptoCurrencyList(BuildContext context, [ExchangeRate? exchangeRate]) {
-    print(exchangeRate?.cryptocurrency.name);
+  _buildCryptoCurrencyList(BuildContext context, ExchangeRate exchangeRate) {
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -73,28 +66,10 @@ class _HomePageState extends State<HomePage> {
           crossAxisCount: 2,
           children: [
             CryptoCardWidget(
-              abbr: 'BTC',
-              rate: '--',
-              name: exchangeRate != null ? exchangeRate.cryptocurrency.name : '',
-              icon: CryptoFontIcons.BTC,
-            ),
-            CryptoCardWidget(
-              abbr: 'ETH',
-              rate: '--',
-              name: 'Ethereum',
-              icon: CryptoFontIcons.ETH,
-            ),
-            CryptoCardWidget(
-              abbr: 'LTC',
-              rate: '--',
-              name: 'Litecoin',
-              icon: CryptoFontIcons.LTC,
-            ),
-            CryptoCardWidget(
-              abbr: 'DOGE',
-              rate: '--',
-              name: 'Dogecoin',
-              icon: CryptoFontIcons.DOGE,
+              code: exchangeRate.cryptocurrency.code,
+              rate: exchangeRate.rate.toStringAsFixed(2),
+              name: exchangeRate.cryptocurrency.name,
+              iconData: exchangeRate.cryptocurrency.icon,
             ),
           ],
         ),
