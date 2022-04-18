@@ -1,5 +1,6 @@
 import 'package:cryptocurrency_converter/app.dart';
 import 'package:cryptocurrency_converter/converter/converter.dart';
+import 'package:cryptocurrency_converter/converter/models/currency.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -16,6 +17,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late Currency selectedCurrency;
+
+  @override
+  void initState() {
+    selectedCurrency = SupportedCurrencies.list.entries.first.value;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +42,7 @@ class _HomePageState extends State<HomePage> {
           },
           child: SmartRefresher(
             onRefresh: () async {
-              context.read<ConverterCubit>().fetchExchangeRate();
+              context.read<ConverterCubit>().fetchExchangeRates(selectedCurrency.code);
             },
             enablePullDown: true,
             header: const WaterDropHeader(),
@@ -47,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                       return _buildCryptoCurrencyList(context, state.exchangeRates);
                     },
                   ),
-                  const DropdownButtonWidget(),
+                  DropdownButtonWidget(selectedCurrency),
                 ],
               ),
             ),
@@ -80,14 +89,21 @@ class _HomePageState extends State<HomePage> {
 }
 
 class DropdownButtonWidget extends StatefulWidget {
-  const DropdownButtonWidget({Key? key}) : super(key: key);
+  Currency selectedCurrency;
+
+  DropdownButtonWidget(this.selectedCurrency, {Key? key});
 
   @override
   _DropdownButtonWidgetState createState() => _DropdownButtonWidgetState();
 }
 
 class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
-  String dropdownValue = 'BRL';
+  late Currency currentCurrencySelected;
+  @override
+  void initState() {
+    currentCurrencySelected = widget.selectedCurrency;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,20 +118,21 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
           DropdownButtonHideUnderline(
             child: DropdownButton(
               dropdownColor: Nord0,
-              value: dropdownValue,
+              value: currentCurrencySelected,
               icon: const Icon(Icons.arrow_downward),
-              items: <String>['BRL', 'USD', 'EUR'].map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
+              items: SupportedCurrencies.list.entries.map((entry) {
+                return DropdownMenuItem<Currency>(
+                  value: entry.value,
                   child: Text(
-                    value,
+                    entry.key,
                     style: Theme.of(context).textTheme.bodyText1,
                   ),
                 );
               }).toList(),
-              onChanged: (String? newValue) {
+              onChanged: (Currency? newValue) {
                 setState(() {
-                  dropdownValue = newValue!;
+                  currentCurrencySelected = newValue!;
+                  _refreshController.requestRefresh(needMove: true);
                 });
               },
             ),

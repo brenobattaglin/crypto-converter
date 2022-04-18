@@ -20,22 +20,22 @@ class ConverterCubit extends HydratedCubit<ConverterState> {
   @override
   Map<String, dynamic>? toJson(ConverterState state) => state.toJson();
 
-  Future<void> fetchExchangeRate() async {
+  Future<void> fetchExchangeRates(String currencyCode) async {
     emit(state.copyWith(status: ConversionStatus.loading));
 
     try {
-      //TODO: Check if one request can be made to the API
+      //TODO: Check if one request can be made for the API
       final btcResponse = ExchangeRate.fromRepository(
-        await _coinRepository.getExchangeRate('BTC', 'BRL'),
+        await _coinRepository.getExchangeRate('BTC', currencyCode),
       );
       final ethResponse = ExchangeRate.fromRepository(
-        await _coinRepository.getExchangeRate('ETH', 'BRL'),
+        await _coinRepository.getExchangeRate('ETH', currencyCode),
       );
       final lthResponse = ExchangeRate.fromRepository(
-        await _coinRepository.getExchangeRate('LTC', 'BRL'),
+        await _coinRepository.getExchangeRate('LTC', currencyCode),
       );
       final dogeResponse = ExchangeRate.fromRepository(
-        await _coinRepository.getExchangeRate('BTC', 'BRL'),
+        await _coinRepository.getExchangeRate('BTC', currencyCode),
       );
 
       emit(state.copyWith(
@@ -47,7 +47,7 @@ class ConverterCubit extends HydratedCubit<ConverterState> {
           dogeResponse,
         ]),
       ));
-    } on Exception catch (e) {
+    } on Exception {
       emit(state.copyWith(status: ConversionStatus.failure));
     }
   }
