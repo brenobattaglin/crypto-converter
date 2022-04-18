@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
           listener: (context, state) {
             if (state.status == ConversionStatus.failure) {
               _refreshController.refreshFailed();
-            } else {
+            } else if (state.status == ConversionStatus.success) {
               _refreshController.refreshCompleted();
             }
           },
