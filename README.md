@@ -9,5 +9,6 @@ A cryptocurrency price tracker that consumes [CoinAPI](https://www.coinapi.io/).
 
 ## Getting Started
 
-1. Go to [CoinAPI](https://www.coinapi.io/) and generate your API key;
-2. Go to `packages/coin_api/lib/src/coin_api_client.dart` and update the const `_apiKey` value with your API key you received via e-mail.
+1. Go to [CoinAPI](https://www.coinapi.io/) and generate your API key. You'll receive one via e-mail;
+2. Go to `packages/coin_api/lib/auth/secrets.dart` and update the final `coinApi` value with your API key.
+3. Build the app normally.
