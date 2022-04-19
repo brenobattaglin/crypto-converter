@@ -1,6 +1,5 @@
-import 'package:cryptocurrency_converter/app.dart';
-import 'package:cryptocurrency_converter/converter/converter.dart';
-import 'package:cryptocurrency_converter/converter/models/currency.dart';
+import 'package:crypto_converter/app.dart';
+import 'package:crypto_converter/converter/converter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';

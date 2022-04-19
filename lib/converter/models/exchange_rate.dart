@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:coin_repository/coin_repository.dart' as coin_repository;
-import 'package:cryptocurrency_converter/converter/converter.dart';
+import 'package:crypto_converter/converter/converter.dart';
 
 @JsonSerializable()
 class ExchangeRate extends Equatable {
