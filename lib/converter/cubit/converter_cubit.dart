@@ -24,7 +24,6 @@ class ConverterCubit extends HydratedCubit<ConverterState> {
     emit(state.copyWith(status: ConversionStatus.loading));
 
     try {
-      //TODO: Check if one request can be made for the API
       final btcResponse = ExchangeRate.fromRepository(
         await _coinRepository.getExchangeRate('BTC', currencyCode),
       );
@@ -35,7 +34,7 @@ class ConverterCubit extends HydratedCubit<ConverterState> {
         await _coinRepository.getExchangeRate('LTC', currencyCode),
       );
       final dogeResponse = ExchangeRate.fromRepository(
-        await _coinRepository.getExchangeRate('BTC', currencyCode),
+        await _coinRepository.getExchangeRate('DOGE', currencyCode),
       );
 
       emit(state.copyWith(
