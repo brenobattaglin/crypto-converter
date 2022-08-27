@@ -32,6 +32,12 @@ void main() {
       when(() => coinRepository.getExchangeRate('ETH', any())).thenAnswer((_) async => ethereum);
       when(() => coinRepository.getExchangeRate('LTC', any())).thenAnswer((_) async => litecoin);
       when(() => coinRepository.getExchangeRate('DOGE', any())).thenAnswer((_) async => dogecoin);
+      converterCubit = ConverterCubit(coinRepository);
+    });
+
+    test('initial state is correct', () {
+      converterCubit = ConverterCubit(coinRepository);
+      expect(converterCubit.state, ConverterState());
     });
   });
 }
