@@ -13,7 +13,6 @@ dependencies:
   coin_api:
     path: ../coin_api
   equatable: ^2.0.3
-  
 
 dev_dependencies:
   coverage: ^1.0.4
