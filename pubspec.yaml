@@ -12,9 +12,8 @@ dependencies:
   bloc: ^8.0.0
   flutter_bloc: ^8.0.0
   equatable: ^2.0.3
-  google_fonts: ^2.2.0
+  google_fonts: ^3.0.1
   hydrated_bloc: ^8.0.0
-  json_annotation: ^4.4.0
   path_provider: ^2.0.3
   coin_repository:
     path: packages/coin_repository
@@ -26,8 +25,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   bloc_test: ^9.0.1
-  mocktail: ^0.2.0
-  flutter_lints: ^1.0.4
+  mocktail: ^0.3.0
+  flutter_lints: ^2.0.1
   build_runner: ^2.1.7
   json_serializable: ^6.1.3
 
