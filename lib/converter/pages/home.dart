@@ -29,6 +29,13 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Converter', style: TextStyle(fontSize: 15)),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            //TODO: go to settings page
+            onPressed: () => null,
+          ),
+        ],
       ),
       body: SafeArea(
         child: BlocListener<ConverterCubit, ConverterState>(
