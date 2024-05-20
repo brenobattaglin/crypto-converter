@@ -36,10 +36,10 @@ class CryptoCardWidget extends StatelessWidget {
           ),
           Text(
             rate.toString(),
-            style: Theme.of(context).textTheme.headline3,
+            style: Theme.of(context).textTheme.headlineSmall,
             maxLines: 1,
           ),
-          Text(code, style: Theme.of(context).textTheme.headline6),
+          Text(code, style: Theme.of(context).textTheme.headlineSmall),
         ],
       ),
     );
