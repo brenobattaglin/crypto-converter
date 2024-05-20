@@ -63,17 +63,17 @@ class ConverterAppView extends StatelessWidget {
         ),
         primaryColor: Nord4,
         textTheme: const TextTheme().copyWith(
-          headline3: const TextStyle(
+          headlineSmall: const TextStyle(
             fontWeight: defaultFontWeight,
             color: Nord4,
             fontSize: 22,
           ),
-          bodyText1: const TextStyle(
+          bodyMedium: const TextStyle(
             fontWeight: defaultFontWeight,
             color: Nord4,
             fontSize: 30,
           ),
-          bodyText2: const TextStyle(
+          bodySmall: const TextStyle(
             fontWeight: defaultFontWeight,
             color: Nord4,
             fontSize: 18,

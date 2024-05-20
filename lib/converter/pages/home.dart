@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-import '../converter.dart';
-
 RefreshController _refreshController = RefreshController(initialRefresh: true);
 
 class HomePage extends StatefulWidget {
@@ -112,7 +110,7 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
         children: [
           Text(
             'Select the currency:',
-            style: Theme.of(context).textTheme.bodyText2,
+            style: Theme.of(context).textTheme.bodySmall,
           ),
           DropdownButtonHideUnderline(
             child: DropdownButton(
@@ -124,7 +122,7 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
                   value: entry.value,
                   child: Text(
                     entry.key,
-                    style: Theme.of(context).textTheme.bodyText1,
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 );
               }).toList(),
