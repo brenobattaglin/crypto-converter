@@ -1,19 +1,21 @@
 import 'package:crypto_converter/app.dart';
-import 'package:crypto_converter/converter/converter.dart';
+import 'package:crypto_converter/domain/converter/converter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+import '../converter.dart';
+
 RefreshController _refreshController = RefreshController(initialRefresh: true);
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class ConversionView extends StatefulWidget {
+  const ConversionView({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<ConversionView> createState() => _ConversionViewState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _ConversionViewState extends State<ConversionView> {
   late Currency selectedCurrency;
 
   @override
@@ -72,7 +74,7 @@ class _HomePageState extends State<HomePage> {
           crossAxisCount: 2,
           children: [
             for (var exchange in exchangeRates)
-              CryptoCardWidget(
+              CardWidget(
                 code: exchange.cryptocurrency.code,
                 rate: exchange.rate.toStringAsFixed(2),
                 name: exchange.cryptocurrency.name,

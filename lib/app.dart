@@ -2,7 +2,8 @@ import 'package:coin_repository/coin_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'converter/converter.dart';
+
+import 'presenter/converter/converter.dart';
 
 const Nord0 = Color(0xFF2E3440);
 const Nord3 = Color(0xFF4C566A);
@@ -88,7 +89,7 @@ class ConverterAppView extends StatelessWidget {
       ),
       home: BlocProvider(
         create: (_) => ConverterCubit(context.read<CoinRepository>()),
-        child: const HomePage(),
+        child: const ConversionView(),
       ),
     );
   }
