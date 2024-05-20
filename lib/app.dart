@@ -1,4 +1,5 @@
 import 'package:coin_repository/coin_repository.dart';
+import 'package:crypto_converter/presenter/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -52,7 +53,7 @@ class ConverterAppView extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'converter',
+      title: AppStrings.appName,
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: Nord3,
         appBarTheme: const AppBarTheme(
