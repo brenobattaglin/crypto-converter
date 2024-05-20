@@ -1,13 +1,13 @@
 import 'package:crypto_converter/app.dart';
 import 'package:flutter/material.dart';
 
-class CryptoCardWidget extends StatelessWidget {
+class CardWidget extends StatelessWidget {
   final String name;
   final IconData iconData;
   final String rate;
   final String code;
 
-  const CryptoCardWidget({
+  const CardWidget({
     Key? key,
     required this.code,
     required this.rate,

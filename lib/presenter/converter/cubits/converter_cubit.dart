@@ -1,13 +1,13 @@
 import 'dart:core';
 
+import 'package:coin_repository/coin_repository.dart' show CoinRepository;
+import 'package:crypto_converter/domain/converter/converter.dart';
 import 'package:equatable/equatable.dart';
-import 'package:crypto_converter/converter/converter.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:coin_repository/coin_repository.dart' show CoinRepository;
 
-part 'converter_state.dart';
 part 'converter_cubit.g.dart';
+part 'converter_state.dart';
 
 class ConverterCubit extends HydratedCubit<ConverterState> {
   ConverterCubit(this._coinRepository) : super(ConverterState());
