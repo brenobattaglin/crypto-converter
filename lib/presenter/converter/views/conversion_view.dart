@@ -1,5 +1,6 @@
 import 'package:crypto_converter/app.dart';
 import 'package:crypto_converter/domain/converter/converter.dart';
+import 'package:crypto_converter/presenter/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -28,7 +29,7 @@ class _ConversionViewState extends State<ConversionView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Converter', style: TextStyle(fontSize: 15)),
+        title: const Text(AppStrings.appName, style: TextStyle(fontSize: 15)),
       ),
       body: SafeArea(
         child: BlocListener<ConverterCubit, ConverterState>(
@@ -74,7 +75,7 @@ class _ConversionViewState extends State<ConversionView> {
           crossAxisCount: 2,
           children: [
             for (var exchange in exchangeRates)
-              CardWidget(
+              CryptoCardWidget(
                 code: exchange.cryptocurrency.code,
                 rate: exchange.rate.toStringAsFixed(2),
                 name: exchange.cryptocurrency.name,

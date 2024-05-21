@@ -1,13 +1,13 @@
 import 'package:crypto_converter/app.dart';
 import 'package:flutter/material.dart';
 
-class CardWidget extends StatelessWidget {
+class CryptoCardWidget extends StatelessWidget {
   final String name;
   final IconData iconData;
   final String rate;
   final String code;
 
-  const CardWidget({
+  const CryptoCardWidget({
     Key? key,
     required this.code,
     required this.rate,
@@ -18,7 +18,6 @@ class CardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Nord0,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
