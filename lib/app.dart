@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:flutter_bloc/src/bloc_provider.dart';
-import 'package:flutter_bloc/src/repository_provider.dart';
 import 'presenter/converter/converter.dart';
 
 const Nord0 = Color(0xFF2E3440);
@@ -14,7 +12,7 @@ const Nord4 = Color(0xFFECEFF4);
 
 const defaultFontWeight = FontWeight.w100;
 
-class App extends StatelessWidget {
+class App extends StatefulWidget {
   final CoinRepository coinRepository;
 
   const App({
@@ -23,11 +21,16 @@ class App extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<App> createState() => _AppState();
+}
+
+class _AppState extends State<App> {
+  @override
   Widget build(BuildContext context) {
     _lockScreenOrientation();
     _setStatusBarIconsColorToDark();
     return RepositoryProvider.value(
-      value: coinRepository,
+      value: widget.coinRepository,
       child: BlocProvider(
         create: (context) => ConverterCubit(context.read<CoinRepository>()),
         child: MaterialApp(
