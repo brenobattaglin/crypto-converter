@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'presenter/converter/converter.dart';
 
+//TODO: Refactor needed
 const Nord0 = Color(0xFF2E3440);
 const Nord3 = Color(0xFF4C566A);
 const Nord4 = Color(0xFFECEFF4);
@@ -49,8 +50,8 @@ class _AppState extends State<App> {
   ThemeData get _theme => ThemeData.dark().copyWith(
         scaffoldBackgroundColor: Nord3,
         appBarTheme: const AppBarTheme(
+          scrolledUnderElevation: 0,
           color: Colors.transparent,
-          elevation: 0,
           titleTextStyle: TextStyle(
             color: Nord4,
           ),
