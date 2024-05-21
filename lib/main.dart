@@ -8,13 +8,19 @@ import 'presenter/core/core.dart';
 
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  final observer = Observer();
+  final coinRepository = CoinRepository();
   final storage = await HydratedStorage.build(
     storageDirectory: await getTemporaryDirectory(),
   );
 
   HydratedBlocOverrides.runZoned(
-    () => runApp(App(coinRepository: CoinRepository())),
-    blocObserver: Observer(),
+    () => runApp(
+      App(
+        coinRepository: coinRepository,
+      ),
+    ),
+    blocObserver: observer,
     storage: storage,
   );
 }

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:flutter_bloc/src/bloc_provider.dart';
+import 'package:flutter_bloc/src/repository_provider.dart';
 import 'presenter/converter/converter.dart';
 
 const Nord0 = Color(0xFF2E3440);
@@ -13,48 +15,34 @@ const Nord4 = Color(0xFFECEFF4);
 const defaultFontWeight = FontWeight.w100;
 
 class App extends StatelessWidget {
+  final CoinRepository coinRepository;
+
   const App({
     Key? key,
-    required CoinRepository coinRepository,
-  })  : _coinRepository = coinRepository,
-        super(key: key);
-
-  final CoinRepository _coinRepository;
+    required this.coinRepository,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     _lockScreenOrientation();
     _setStatusBarIconsColorToDark();
     return RepositoryProvider.value(
-      value: _coinRepository,
-      child: const ConverterAppView(),
+      value: coinRepository,
+      child: BlocProvider(
+        create: (context) => ConverterCubit(context.read<CoinRepository>()),
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: AppStrings.appName,
+          theme: _theme,
+          initialRoute: Routes.converter,
+          home: const ConversionView(),
+        ),
+      ),
     );
   }
 
-  void _lockScreenOrientation() {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-    ]);
-  }
-
-  void _setStatusBarIconsColorToDark() {
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarBrightness: Brightness.light,
-    ));
-  }
-}
-
-class ConverterAppView extends StatelessWidget {
-  const ConverterAppView({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: AppStrings.appName,
-      theme: ThemeData.dark().copyWith(
+  //TODO: refactor needed
+  ThemeData get _theme => ThemeData.dark().copyWith(
         scaffoldBackgroundColor: Nord3,
         appBarTheme: const AppBarTheme(
           color: Colors.transparent,
@@ -82,16 +70,19 @@ class ConverterAppView extends StatelessWidget {
           ),
         ),
         cardTheme: const CardTheme().copyWith(
+          color: Nord0,
           shadowColor: Colors.transparent,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
           ),
         ),
-      ),
-      home: BlocProvider(
-        create: (_) => ConverterCubit(context.read<CoinRepository>()),
-        child: const ConversionView(),
-      ),
-    );
-  }
+      );
+
+  void _lockScreenOrientation() => SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+      ]);
+
+  void _setStatusBarIconsColorToDark() => SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+        statusBarBrightness: Brightness.light,
+      ));
 }
