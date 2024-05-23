@@ -1,9 +1,9 @@
-import 'package:crypto_converter/presenter/core/core.dart';
+import 'package:crypto_converter/core/presenter/core.dart';
+import 'package:crypto_converter/presenter/converter/cubits/converter_cubit.dart';
+import 'package:crypto_converter/presenter/converter/views/conversion_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'presenter/converter/converter.dart';
 
 //TODO: Refactor needed
 const Nord0 = Color(0xFF2E3440);
