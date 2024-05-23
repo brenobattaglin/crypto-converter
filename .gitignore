@@ -87,3 +87,4 @@ lib/generated_plugin_registrant.dart
 
 # dotenv
 .env
+*env.g.dart
