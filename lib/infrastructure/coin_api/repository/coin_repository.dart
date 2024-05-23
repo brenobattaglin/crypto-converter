@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:coin_api/coin_api.dart' hide ExchangeRate;
-import 'package:coin_repository/coin_repository.dart';
+import 'package:crypto_converter/infrastructure/coin_api/models/exchange_rate_data.dart';
 
 class CoinFailure implements Exception {}
 
@@ -9,9 +9,9 @@ class CoinRepository {
 
   final CoinApiClient _apiClient;
 
-  Future<ExchangeRate> getExchangeRate(String cryptoCurrency, String currency) async {
+  Future<ExchangeRateData> getExchangeRate(String cryptoCurrency, String currency) async {
     final exchangeRate = await _apiClient.getExchangeRate(cryptoCurrency, currency);
-    return ExchangeRate(
+    return ExchangeRateData(
       cryptoCurrency: exchangeRate.assetIdBase.toCryptoCurrency,
       currency: exchangeRate.assetIdQuote.toCurrency,
       rate: exchangeRate.rate,
@@ -20,65 +20,65 @@ class CoinRepository {
 }
 
 extension on CurrencyIdBase {
-  Cryptocurrency get toCryptoCurrency {
+  CryptocurrencyType get toCryptoCurrency {
     switch (this) {
       case CurrencyIdBase.bitcoin:
-        return Cryptocurrency.bitcoin;
+        return CryptocurrencyType.bitcoin;
       case CurrencyIdBase.ethereum:
-        return Cryptocurrency.ethereum;
+        return CryptocurrencyType.ethereum;
       case CurrencyIdBase.litecoin:
-        return Cryptocurrency.litecoin;
+        return CryptocurrencyType.litecoin;
       case CurrencyIdBase.dogecoin:
-        return Cryptocurrency.dogecoin;
+        return CryptocurrencyType.dogecoin;
     }
   }
 }
 
 extension on CurrencyIdQuote {
-  Currency get toCurrency {
+  CurrencyType get toCurrency {
     switch (this) {
       case CurrencyIdQuote.australianDollar:
-        return Currency.australianDollar;
+        return CurrencyType.australianDollar;
       case CurrencyIdQuote.brazilianReal:
-        return Currency.brazilianReal;
+        return CurrencyType.brazilianReal;
       case CurrencyIdQuote.canadianDollar:
-        return Currency.canadianDollar;
+        return CurrencyType.canadianDollar;
       case CurrencyIdQuote.chineseYuan:
-        return Currency.chineseYuan;
+        return CurrencyType.chineseYuan;
       case CurrencyIdQuote.euro:
-        return Currency.euro;
+        return CurrencyType.euro;
       case CurrencyIdQuote.greatBritishPound:
-        return Currency.greatBritishPound;
+        return CurrencyType.greatBritishPound;
       case CurrencyIdQuote.hongKongDollar:
-        return Currency.hongKongDollar;
+        return CurrencyType.hongKongDollar;
       case CurrencyIdQuote.indonesianRupiah:
-        return Currency.indonesianRupiah;
+        return CurrencyType.indonesianRupiah;
       case CurrencyIdQuote.israeliShekel:
-        return Currency.israeliShekel;
+        return CurrencyType.israeliShekel;
       case CurrencyIdQuote.indianRupee:
-        return Currency.indianRupee;
+        return CurrencyType.indianRupee;
       case CurrencyIdQuote.japaneseYen:
-        return Currency.japaneseYen;
+        return CurrencyType.japaneseYen;
       case CurrencyIdQuote.mexicanPeso:
-        return Currency.mexicanPeso;
+        return CurrencyType.mexicanPeso;
       case CurrencyIdQuote.norwegianKroner:
-        return Currency.norwegianKroner;
+        return CurrencyType.norwegianKroner;
       case CurrencyIdQuote.newZealandDollar:
-        return Currency.newZealandDollar;
+        return CurrencyType.newZealandDollar;
       case CurrencyIdQuote.polishZloty:
-        return Currency.polishZloty;
+        return CurrencyType.polishZloty;
       case CurrencyIdQuote.romaniaNewLei:
-        return Currency.romaniaNewLei;
+        return CurrencyType.romaniaNewLei;
       case CurrencyIdQuote.russianRuble:
-        return Currency.russianRuble;
+        return CurrencyType.russianRuble;
       case CurrencyIdQuote.swedishKrona:
-        return Currency.swedishKrona;
+        return CurrencyType.swedishKrona;
       case CurrencyIdQuote.singaporeDollar:
-        return Currency.singaporeDollar;
+        return CurrencyType.singaporeDollar;
       case CurrencyIdQuote.usDollar:
-        return Currency.usDollar;
+        return CurrencyType.usDollar;
       case CurrencyIdQuote.southAfricanRand:
-        return Currency.southAfricanRand;
+        return CurrencyType.southAfricanRand;
     }
   }
 }
