@@ -10,7 +10,7 @@ const Nord0 = Color(0xFF2E3440);
 const Nord3 = Color(0xFF4C566A);
 const Nord4 = Color(0xFFECEFF4);
 
-const defaultFontWeight = FontWeight.w100;
+const defaultFontWeight = FontWeight.w300;
 
 class App extends StatefulWidget {
   const App({
@@ -59,12 +59,12 @@ class _AppState extends State<App> {
           bodyMedium: const TextStyle(
             fontWeight: defaultFontWeight,
             color: Nord4,
-            fontSize: 30,
+            fontSize: 16,
           ),
           bodySmall: const TextStyle(
             fontWeight: defaultFontWeight,
             color: Nord4,
-            fontSize: 18,
+            fontSize: 14,
           ),
         ),
         cardTheme: const CardTheme().copyWith(
