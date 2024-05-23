@@ -94,7 +94,7 @@ class _ConversionViewState extends State<ConversionView> {
               ),
               DropdownButtonHideUnderline(
                 child: DropdownButton(
-                  dropdownColor: Nord0,
+                  dropdownColor: nord0,
                   value: selectedCurrency,
                   icon: const Icon(Icons.arrow_downward),
                   items: SupportedCurrencies.list.entries
