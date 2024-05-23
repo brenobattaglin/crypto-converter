@@ -1,0 +1,23 @@
+name: Flutter Test
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  test:
+    name: Run Flutter Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version-file: pubspec.yaml
+      - name: Setup dependencies
+        run: flutter pub get
+      - name: Format codebase
+        run: dart format . --line-length 120
+      - name: Analyze codebase
+        run: flutter analyze
