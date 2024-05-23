@@ -1,8 +1,15 @@
 build_runner:
+	flutter pub run build_runner build
+
+build_runner_delete_conflicting_outputs:
 	flutter pub run build_runner build --delete-conflicting-outputs
 
 clean: 
-	sh scripts/clean.sh
+	flutter clean
+
+update_dotenv_vars:
+	make build_runner_delete_conflicting_outputs
 
 setup: 
-	sh scripts/setup.sh
+	flutter pub get
+	make build_runner_delete_conflicting_outputs
