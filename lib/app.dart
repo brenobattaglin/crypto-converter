@@ -6,9 +6,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 //TODO: Refactor needed
-const Nord0 = Color(0xFF2E3440);
-const Nord3 = Color(0xFF4C566A);
-const Nord4 = Color(0xFFECEFF4);
+const nord0 = Color(0xFF2E3440);
+const nord3 = Color(0xFF4C566A);
+const nord4 = Color(0xFFECEFF4);
 
 const defaultFontWeight = FontWeight.w300;
 
@@ -41,34 +41,34 @@ class _AppState extends State<App> {
 
   //TODO: refactor needed
   ThemeData get _theme => ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: Nord3,
+        scaffoldBackgroundColor: nord3,
         appBarTheme: const AppBarTheme(
           scrolledUnderElevation: 0,
           color: Colors.transparent,
           titleTextStyle: TextStyle(
-            color: Nord4,
+            color: nord4,
           ),
         ),
-        primaryColor: Nord4,
+        primaryColor: nord4,
         textTheme: const TextTheme().copyWith(
           headlineSmall: const TextStyle(
             fontWeight: defaultFontWeight,
-            color: Nord4,
+            color: nord4,
             fontSize: 22,
           ),
           bodyMedium: const TextStyle(
             fontWeight: defaultFontWeight,
-            color: Nord4,
+            color: nord4,
             fontSize: 16,
           ),
           bodySmall: const TextStyle(
             fontWeight: defaultFontWeight,
-            color: Nord4,
+            color: nord4,
             fontSize: 14,
           ),
         ),
         cardTheme: const CardTheme().copyWith(
-          color: Nord0,
+          color: nord0,
           shadowColor: Colors.transparent,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),

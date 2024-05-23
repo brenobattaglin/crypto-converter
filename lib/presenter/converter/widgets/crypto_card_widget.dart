@@ -25,7 +25,7 @@ class CryptoCardWidget extends StatelessWidget {
                 child: Icon(
                   AppIcons.getIconData(_cryptoName),
                   size: 17,
-                  color: Nord4,
+                  color: nord4,
                 ),
               ),
               TextSpan(text: ' ${crypto.name}')
