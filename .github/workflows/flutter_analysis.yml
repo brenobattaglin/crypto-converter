@@ -1,11 +1,11 @@
-name: Flutter Test
+name: Flutter Analysis
 on:
   pull_request:
     branches:
       - main
 jobs:
   test:
-    name: Run Flutter Tests
+    name: Run Flutter Analysis
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
