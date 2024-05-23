@@ -48,14 +48,17 @@ class _ConversionViewState extends State<ConversionView> {
             header: const WaterDropHeader(),
             controller: refreshController,
             child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  BlocBuilder<ConverterCubit, ConverterState>(
-                    builder: (context, state) => _buildCryptoCurrencyList(state.exchangeRates),
-                  ),
-                  _buildCoinDropdownButton(refreshController: refreshController),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    _buildCoinDropdownButton(refreshController: refreshController),
+                    BlocBuilder<ConverterCubit, ConverterState>(
+                      builder: (context, state) => _buildCryptoCurrencyList(state.exchangeRates),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -67,51 +70,49 @@ class _ConversionViewState extends State<ConversionView> {
   void _onRefresh() async => context.read<ConverterCubit>().fetchExchangeRates(selectedCurrency.code);
 
   _buildCryptoCurrencyList(List<ExchangeRate> exchangeRates) => Expanded(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: GridView.count(
-            primary: false,
-            crossAxisCount: 2,
-            children: [
-              for (var exchange in exchangeRates)
-                CryptoCardWidget(
-                  crypto: exchange.cryptocurrency,
-                  rate: exchange.rate.toStringAsFixed(2),
-                )
-            ],
-          ),
+        child: GridView.count(
+          primary: false,
+          crossAxisCount: 2,
+          children: [
+            for (var exchange in exchangeRates)
+              CryptoCardWidget(
+                crypto: exchange.cryptocurrency,
+                rate: exchange.rate.toStringAsFixed(2),
+              )
+          ],
         ),
       );
 
-  Padding _buildCoinDropdownButton({required RefreshController refreshController}) => Padding(
-        padding: const EdgeInsets.fromLTRB(10, 100, 10, 100),
-        child: Column(
-          children: [
-            Text(
-              'Select the currency:',
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
-            DropdownButtonHideUnderline(
-              child: DropdownButton(
-                dropdownColor: Nord0,
-                value: selectedCurrency,
-                icon: const Icon(Icons.arrow_downward),
-                items: SupportedCurrencies.list.entries
-                    .map((entry) => DropdownMenuItem<Currency>(
-                          value: entry.value,
-                          child: Text(
-                            entry.key,
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
-                        ))
-                    .toList(),
-                onChanged: (Currency? newValue) => setState(() {
-                  selectedCurrency = newValue!;
-                  refreshController.requestRefresh(needMove: true);
-                }),
+  Widget _buildCoinDropdownButton({required RefreshController refreshController}) => Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text(
+                AppStrings.currencyLabel,
+                style: Theme.of(context).textTheme.bodySmall,
               ),
-            ),
-          ],
-        ),
+              DropdownButtonHideUnderline(
+                child: DropdownButton(
+                  dropdownColor: Nord0,
+                  value: selectedCurrency,
+                  icon: const Icon(Icons.arrow_downward),
+                  items: SupportedCurrencies.list.entries
+                      .map((entry) => DropdownMenuItem<Currency>(
+                            value: entry.value,
+                            child: Text(
+                              entry.key,
+                            ),
+                          ))
+                      .toList(),
+                  onChanged: (Currency? newValue) => setState(() {
+                    selectedCurrency = newValue!;
+                    refreshController.requestRefresh(needMove: true);
+                  }),
+                ),
+              ),
+            ],
+          ),
+        ],
       );
 }
