@@ -18,5 +18,5 @@ A cryptocurrency price tracker made with Flutter, that uses [CoinAPI](https://ww
 
 ## Notes
 
-- Run `update_dotenv_vars` when you change the `.env` file;
-- The API key is stored in the `.env` and `env.g.dart` files, due to the library used to handle environment variables.
+- Run `make update_dotenv_vars` every time you change the `.env` file;
+- The API key is stored in `.env` and `env.g.dart` files, due to the library used to handle environment variables.
