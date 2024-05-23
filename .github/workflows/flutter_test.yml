@@ -17,11 +17,7 @@ jobs:
           flutter-version: 3.22.1
       - name: Setup dependencies
         run: flutter pub get
-      - name: Clean g files
-        run: dart pub run build_runner clean
       - name: Setup g files
         run: dart pub run build_runner build --delete-conflicting-outputs
-      - name: Format codebase
-        run: dart format . --line-length 120
       - name: Analyze codebase
         run: flutter analyze
