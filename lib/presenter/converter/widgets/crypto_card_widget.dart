@@ -1,18 +1,16 @@
 import 'package:crypto_converter/app.dart';
+import 'package:crypto_converter/domain/converter/models/cryptocurrency.dart';
+import 'package:crypto_converter/presenter/core/icons.dart';
 import 'package:flutter/material.dart';
 
 class CryptoCardWidget extends StatelessWidget {
-  final String name;
-  final IconData iconData;
+  final Cryptocurrency crypto;
   final String rate;
-  final String code;
 
   const CryptoCardWidget({
     Key? key,
-    required this.code,
+    required this.crypto,
     required this.rate,
-    required this.name,
-    required this.iconData,
   }) : super(key: key);
 
   @override
@@ -25,12 +23,12 @@ class CryptoCardWidget extends StatelessWidget {
             text: TextSpan(children: [
               WidgetSpan(
                 child: Icon(
-                  iconData,
+                  AppIcons.getIconData(_cryptoName),
                   size: 17,
                   color: Nord4,
                 ),
               ),
-              TextSpan(text: ' $name')
+              TextSpan(text: ' ${crypto.name}')
             ]),
           ),
           Text(
@@ -38,9 +36,13 @@ class CryptoCardWidget extends StatelessWidget {
             style: Theme.of(context).textTheme.headlineSmall,
             maxLines: 1,
           ),
-          Text(code, style: Theme.of(context).textTheme.headlineSmall),
+          Text(_cryptoCode, style: Theme.of(context).textTheme.headlineSmall),
         ],
       ),
     );
   }
+
+  String get _cryptoName => crypto.name;
+
+  String get _cryptoCode => crypto.code;
 }
