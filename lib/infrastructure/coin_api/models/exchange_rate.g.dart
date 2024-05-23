@@ -8,25 +8,19 @@ part of 'exchange_rate.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ExchangeRate _$ExchangeRateFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
+ExchangeRate _$ExchangeRateFromJson(Map<String, dynamic> json) => $checkedCreate(
       'ExchangeRate',
       json,
       ($checkedConvert) {
         final val = ExchangeRate(
           time: $checkedConvert('time', (v) => v as String),
-          assetIdBase: $checkedConvert(
-              'asset_id_base', (v) => $enumDecode(_$CurrencyIdBaseEnumMap, v)),
-          assetIdQuote: $checkedConvert('asset_id_quote',
-              (v) => $enumDecode(_$CurrencyIdQuoteEnumMap, v)),
+          assetIdBase: $checkedConvert('asset_id_base', (v) => $enumDecode(_$CurrencyIdBaseEnumMap, v)),
+          assetIdQuote: $checkedConvert('asset_id_quote', (v) => $enumDecode(_$CurrencyIdQuoteEnumMap, v)),
           rate: $checkedConvert('rate', (v) => (v as num).toDouble()),
         );
         return val;
       },
-      fieldKeyMap: const {
-        'assetIdBase': 'asset_id_base',
-        'assetIdQuote': 'asset_id_quote'
-      },
+      fieldKeyMap: const {'assetIdBase': 'asset_id_base', 'assetIdQuote': 'asset_id_quote'},
     );
 
 const _$CurrencyIdBaseEnumMap = {

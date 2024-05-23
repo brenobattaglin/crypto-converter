@@ -1,5 +1,7 @@
 import 'dart:async';
-import 'package:coin_api/coin_api.dart' hide ExchangeRate;
+
+import 'package:crypto_converter/infrastructure/coin_api/api/coin_api_client.dart';
+import 'package:crypto_converter/infrastructure/coin_api/models/exchange_rate.dart';
 import 'package:crypto_converter/infrastructure/coin_api/models/exchange_rate_data.dart';
 
 class CoinFailure implements Exception {}
