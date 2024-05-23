@@ -1,12 +1,12 @@
 import 'package:crypto_converter/app.dart';
 import 'package:crypto_converter/domain/converter/models/currency.dart';
 import 'package:crypto_converter/domain/converter/models/exchange_rate.dart';
-import 'package:crypto_converter/presenter/core/core.dart';
+import 'package:crypto_converter/core/presenter/core.dart';
+import 'package:crypto_converter/presenter/converter/cubits/converter_cubit.dart';
+import 'package:crypto_converter/presenter/converter/widgets/crypto_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
-
-import '../converter.dart';
 
 class ConversionView extends StatefulWidget {
   const ConversionView({Key? key}) : super(key: key);

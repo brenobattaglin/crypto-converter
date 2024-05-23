@@ -1,4 +1,4 @@
-import 'package:crypto_converter/presenter/converter/converter.dart';
+import 'package:crypto_converter/presenter/converter/views/conversion_view.dart';
 import 'package:flutter/material.dart';
 
 class Routes {

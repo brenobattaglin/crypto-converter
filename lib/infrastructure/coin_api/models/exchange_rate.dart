@@ -85,4 +85,6 @@ class ExchangeRate {
   });
 
   factory ExchangeRate.fromJson(Map<String, dynamic> json) => _$ExchangeRateFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ExchangeRateToJson(this);
 }

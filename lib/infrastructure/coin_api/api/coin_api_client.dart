@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:crypto_converter/infrastructure/coin_api/models/exchange_rate.dart';
-import 'package:crypto_converter/infrastructure/core/env.dart';
+import 'package:crypto_converter/core/infrastructure/env.dart';
 import 'package:http/http.dart' as http;
 
 /// Exception thrown when exchange rate request fails.
