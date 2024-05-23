@@ -9,7 +9,10 @@ A cryptocurrency price tracker made with Flutter, that uses [CoinAPI](https://ww
 ## Getting Started
 
 1. Go to [CoinAPI](https://www.coinapi.io/) and generate your API key;
-2. Update the `.env` file located on the root folder, with the API key you received via e-mail. Otherwise, the requests will always fail.
+2. Create a `.env` file on the root folder with the API key you received via e-mail, otherwise, the requests will always fail. The file content has to be like this:
+
+   COIN_API_KEY=YOUR_API_KEY
+
 3. Run `make setup` (or the commands inside of it) to setup the project;
 4. Run the app.
 
