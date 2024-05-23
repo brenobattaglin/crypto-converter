@@ -1,4 +1,3 @@
-import 'package:coin_repository/coin_repository.dart';
 import 'package:crypto_converter/presenter/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,11 +13,8 @@ const Nord4 = Color(0xFFECEFF4);
 const defaultFontWeight = FontWeight.w100;
 
 class App extends StatefulWidget {
-  final CoinRepository coinRepository;
-
   const App({
     Key? key,
-    required this.coinRepository,
   }) : super(key: key);
 
   @override
@@ -30,18 +26,15 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     _lockScreenOrientation();
     _setStatusBarIconsColorToDark();
-    return RepositoryProvider.value(
-      value: widget.coinRepository,
-      child: BlocProvider(
-        create: (context) => ConverterCubit(context.read<CoinRepository>()),
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: AppStrings.appName,
-          theme: _theme,
-          initialRoute: Routes.initial,
-          onGenerateRoute: RouteManager.getRoute,
-          home: const ConversionView(),
-        ),
+    return BlocProvider(
+      create: (context) => ConverterCubit(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: AppStrings.appName,
+        theme: _theme,
+        initialRoute: Routes.initial,
+        onGenerateRoute: RouteManager.getRoute,
+        home: const ConversionView(),
       ),
     );
   }
