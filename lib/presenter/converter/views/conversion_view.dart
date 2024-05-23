@@ -1,5 +1,6 @@
 import 'package:crypto_converter/app.dart';
-import 'package:crypto_converter/domain/converter/converter.dart';
+import 'package:crypto_converter/domain/converter/models/currency.dart';
+import 'package:crypto_converter/domain/converter/models/exchange_rate.dart';
 import 'package:crypto_converter/presenter/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -74,10 +75,8 @@ class _ConversionViewState extends State<ConversionView> {
             children: [
               for (var exchange in exchangeRates)
                 CryptoCardWidget(
-                  code: exchange.cryptocurrency.code,
+                  crypto: exchange.cryptocurrency,
                   rate: exchange.rate.toStringAsFixed(2),
-                  name: exchange.cryptocurrency.name,
-                  iconData: exchange.cryptocurrency.icon,
                 )
             ],
           ),

@@ -1,1 +1,1 @@
-export 'card_widget.dart';
+export 'crypto_card_widget.dart';

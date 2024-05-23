@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'coin.g.dart';
+part 'exchange_rate_data.g.dart';
 
-enum Cryptocurrency {
+enum CryptocurrencyType {
   empty,
   bitcoin,
   ethereum,
@@ -11,7 +11,7 @@ enum Cryptocurrency {
   dogecoin,
 }
 
-enum Currency {
+enum CurrencyType {
   empty,
   australianDollar,
   brazilianReal,
@@ -37,19 +37,19 @@ enum Currency {
 }
 
 @JsonSerializable()
-class ExchangeRate extends Equatable {
-  const ExchangeRate({
+class ExchangeRateData extends Equatable {
+  const ExchangeRateData({
     required this.cryptoCurrency,
     required this.currency,
     required this.rate,
   });
 
-  factory ExchangeRate.fromJson(Map<String, dynamic> json) => _$ExchangeRateFromJson(json);
+  factory ExchangeRateData.fromJson(Map<String, dynamic> json) => _$ExchangeRateDataFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ExchangeRateToJson(this);
+  Map<String, dynamic> toJson() => _$ExchangeRateDataToJson(this);
 
-  final Cryptocurrency cryptoCurrency;
-  final Currency currency;
+  final CryptocurrencyType cryptoCurrency;
+  final CurrencyType currency;
   final double rate;
 
   @override
