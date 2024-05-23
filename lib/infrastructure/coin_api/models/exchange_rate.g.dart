@@ -1,27 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: implicit_dynamic_parameter
-
 part of 'exchange_rate.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-ExchangeRate _$ExchangeRateFromJson(Map<String, dynamic> json) => $checkedCreate(
-      'ExchangeRate',
-      json,
-      ($checkedConvert) {
-        final val = ExchangeRate(
-          time: $checkedConvert('time', (v) => v as String),
-          assetIdBase: $checkedConvert('asset_id_base', (v) => $enumDecode(_$CurrencyIdBaseEnumMap, v)),
-          assetIdQuote: $checkedConvert('asset_id_quote', (v) => $enumDecode(_$CurrencyIdQuoteEnumMap, v)),
-          rate: $checkedConvert('rate', (v) => (v as num).toDouble()),
-        );
-        return val;
-      },
-      fieldKeyMap: const {'assetIdBase': 'asset_id_base', 'assetIdQuote': 'asset_id_quote'},
+ExchangeRate _$ExchangeRateFromJson(Map<String, dynamic> json) => ExchangeRate(
+      time: json['time'] as String,
+      assetIdBase: $enumDecode(_$CurrencyIdBaseEnumMap, json['asset_id_base']),
+      assetIdQuote:
+          $enumDecode(_$CurrencyIdQuoteEnumMap, json['asset_id_quote']),
+      rate: (json['rate'] as num).toDouble(),
     );
+
+Map<String, dynamic> _$ExchangeRateToJson(ExchangeRate instance) =>
+    <String, dynamic>{
+      'time': instance.time,
+      'asset_id_base': _$CurrencyIdBaseEnumMap[instance.assetIdBase]!,
+      'asset_id_quote': _$CurrencyIdQuoteEnumMap[instance.assetIdQuote]!,
+      'rate': instance.rate,
+    };
 
 const _$CurrencyIdBaseEnumMap = {
   CurrencyIdBase.bitcoin: 'BTC',
