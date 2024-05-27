@@ -6,16 +6,9 @@ import 'package:path_provider/path_provider.dart';
 
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final observer = Observer();
-  final storage = await HydratedStorage.build(
+  Bloc.observer = Observer();
+  HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: await getTemporaryDirectory(),
   );
-
-  HydratedBlocOverrides.runZoned(
-    () => runApp(
-      const App(),
-    ),
-    blocObserver: observer,
-    storage: storage,
-  );
+  runApp(const App());
 }
