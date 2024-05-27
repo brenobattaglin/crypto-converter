@@ -1,15 +1,18 @@
 build_runner:
-	flutter pub run build_runner build
+	dart pub run build_runner build
 
 build_runner_delete_conflicting_outputs:
-	flutter pub run build_runner build --delete-conflicting-outputs
+	dart pub run build_runner build --delete-conflicting-outputs
+
+build_runner_clean:
+	dart pub run build_runner clean
 
 clean: 
 	flutter clean
 
-update_dotenv_vars:
-	make build_runner_delete_conflicting_outputs
+run:
+	flutter run --dart-define-from-file env.json
 
 setup: 
+	sh scripts/create-env-json.sh
 	flutter pub get
-	make build_runner_delete_conflicting_outputs

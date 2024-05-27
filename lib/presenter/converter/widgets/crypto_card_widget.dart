@@ -1,6 +1,6 @@
 import 'package:crypto_converter/app.dart';
 import 'package:crypto_converter/domain/converter/models/cryptocurrency.dart';
-import 'package:crypto_converter/core/presenter/icons.dart';
+import 'package:crypto_converter/core/icons.dart';
 import 'package:flutter/material.dart';
 
 class CryptoCardWidget extends StatelessWidget {
@@ -25,7 +25,7 @@ class CryptoCardWidget extends StatelessWidget {
                 child: Icon(
                   AppIcons.getIconData(_cryptoName),
                   size: 17,
-                  color: Nord4,
+                  color: nord4,
                 ),
               ),
               TextSpan(text: ' ${crypto.name}')
