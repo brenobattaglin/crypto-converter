@@ -10,10 +10,9 @@ build_runner_clean:
 clean: 
 	flutter clean
 
-update_dotenv_vars:
-	make build_runner_clean
-	make build_runner_delete_conflicting_outputs
+run:
+	flutter run --dart-define-from-file env.json
 
 setup: 
+	sh scripts/create-env-json.sh
 	flutter pub get
-	make update_dotenv_vars
