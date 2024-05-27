@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:crypto_converter/domain/converter/models/exchange_rate.dart';
 import 'package:crypto_converter/domain/converter/usecases/list/list_exchange_rate_dto.dart';
-import 'package:crypto_converter/core/domain/usecase.dart';
+import 'package:crypto_converter/core/usecase.dart';
 import 'package:crypto_converter/infrastructure/coin_api/repository/coin_repository.dart';
 
 class ListExchangeRateUsecase implements Usecase<InputListExchangeRateDto, OutputListExchangeRateDto> {
