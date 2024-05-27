@@ -1,7 +1,7 @@
 import 'package:crypto_converter/app.dart';
+import 'package:crypto_converter/core/strings.dart';
 import 'package:crypto_converter/domain/converter/models/currency.dart';
 import 'package:crypto_converter/domain/converter/models/exchange_rate.dart';
-import 'package:crypto_converter/core/presenter/core.dart';
 import 'package:crypto_converter/presenter/converter/cubits/converter_cubit.dart';
 import 'package:crypto_converter/presenter/converter/widgets/crypto_card_widget.dart';
 import 'package:flutter/material.dart';
