@@ -8,10 +8,10 @@ class CryptoCardWidget extends StatelessWidget {
   final String rate;
 
   const CryptoCardWidget({
-    Key? key,
+    super.key,
     required this.crypto,
     required this.rate,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
