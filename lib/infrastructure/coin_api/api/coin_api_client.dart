@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:crypto_converter/infrastructure/coin_api/models/exchange_rate.dart';
 import 'package:crypto_converter/core/env.dart';
+import 'package:crypto_converter/infrastructure/coin_api/models/exchange_rate.dart';
 import 'package:http/http.dart' as http;
 
 /// Exception thrown when exchange rate request fails.
@@ -15,6 +15,7 @@ class ExchangeRateNoContentFailure implements Exception {}
 class CoinApiClient {
   final http.Client _httpClient;
   final String url = 'rest.coinapi.io';
+  final String apiKey = Env.coinApiKey;
 
   CoinApiClient({http.Client? httpClient}) : _httpClient = httpClient ?? http.Client();
 
@@ -27,7 +28,7 @@ class CoinApiClient {
     final response = await _httpClient.get(
       request,
       headers: {
-        'X-CoinAPI-Key': Env.coinApiKey,
+        'X-CoinAPI-Key': apiKey,
         'Accept-Encoding': 'deflate, gzip',
       },
     );
