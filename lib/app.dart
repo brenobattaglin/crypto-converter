@@ -15,8 +15,8 @@ const defaultFontWeight = FontWeight.w300;
 
 class App extends StatefulWidget {
   const App({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<App> createState() => _AppState();
