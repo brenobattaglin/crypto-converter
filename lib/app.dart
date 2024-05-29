@@ -1,3 +1,4 @@
+import 'package:crypto_converter/core/colors.dart';
 import 'package:crypto_converter/core/routes.dart';
 import 'package:crypto_converter/core/strings.dart';
 import 'package:crypto_converter/presenter/converter/cubits/converter_cubit.dart';
@@ -5,11 +6,6 @@ import 'package:crypto_converter/presenter/converter/views/conversion_view.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-//TODO: Refactor needed
-const nord0 = Color(0xFF2E3440);
-const nord3 = Color(0xFF4C566A);
-const nord4 = Color(0xFFECEFF4);
 
 const defaultFontWeight = FontWeight.w300;
 
@@ -42,38 +38,41 @@ class _AppState extends State<App> {
 
   //TODO: refactor needed
   ThemeData get _theme => ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: nord3,
+        scaffoldBackgroundColor: AppColors.black,
         appBarTheme: const AppBarTheme(
           scrolledUnderElevation: 0,
-          color: Colors.transparent,
+          color: AppColors.transparent,
           titleTextStyle: TextStyle(
-            color: nord4,
+            color: AppColors.white,
           ),
         ),
-        primaryColor: nord4,
+        primaryColor: AppColors.white,
         textTheme: const TextTheme().copyWith(
           headlineSmall: const TextStyle(
             fontWeight: defaultFontWeight,
-            color: nord4,
+            color: AppColors.white,
             fontSize: 22,
           ),
           bodyMedium: const TextStyle(
             fontWeight: defaultFontWeight,
-            color: nord4,
+            color: AppColors.white,
             fontSize: 16,
           ),
           bodySmall: const TextStyle(
             fontWeight: defaultFontWeight,
-            color: nord4,
+            color: AppColors.white,
             fontSize: 14,
           ),
         ),
         cardTheme: const CardTheme().copyWith(
-          color: nord0,
-          shadowColor: Colors.transparent,
+          color: AppColors.grey,
+          shadowColor: AppColors.transparent,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
           ),
+        ),
+        iconTheme: const IconThemeData().copyWith(
+          color: AppColors.white,
         ),
       );
 
