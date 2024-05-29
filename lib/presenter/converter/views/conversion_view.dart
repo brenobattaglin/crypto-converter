@@ -1,4 +1,3 @@
-import 'package:crypto_converter/app.dart';
 import 'package:crypto_converter/core/strings.dart';
 import 'package:crypto_converter/domain/converter/models/currency.dart';
 import 'package:crypto_converter/domain/converter/models/exchange_rate.dart';
@@ -94,7 +93,6 @@ class _ConversionViewState extends State<ConversionView> {
               ),
               DropdownButtonHideUnderline(
                 child: DropdownButton(
-                  dropdownColor: nord0,
                   value: selectedCurrency,
                   icon: const Icon(Icons.arrow_downward),
                   items: SupportedCurrencies.list.entries

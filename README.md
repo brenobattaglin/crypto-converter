@@ -3,7 +3,7 @@
 A cryptocurrency price tracker made with Flutter, that uses [CoinAPI](https://www.coinapi.io/) to get information.
 
 <div align="center">
-  <img src="https://github.com/brenobattaglin/crypto-converter/assets/8771994/bc8b536c-9d12-4167-a4b4-c0e80399c977" alt="app image" height="650"/>
+  <img src="https://github.com/brenobattaglin/crypto-converter/assets/8771994/0a612ed0-b3e5-4a64-87c5-abb1bcb0ec77" alt="app image" height="650"/>
 </div>
 
 ## Getting Started
@@ -15,5 +15,5 @@ A cryptocurrency price tracker made with Flutter, that uses [CoinAPI](https://ww
 
 ### Notes
 
-- The API key is stored only in `env.json`. The app will not work without it.
+- The API key has to be stored in `env.json`. The app will not work without it.
 - Stop and run the app again if you change the API key.
