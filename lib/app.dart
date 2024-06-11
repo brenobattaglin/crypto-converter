@@ -1,8 +1,10 @@
 import 'package:crypto_converter/core/colors.dart';
+import 'package:crypto_converter/core/icons.dart';
 import 'package:crypto_converter/core/routes.dart';
 import 'package:crypto_converter/core/strings.dart';
 import 'package:crypto_converter/presenter/converter/cubits/converter_cubit.dart';
 import 'package:crypto_converter/presenter/converter/views/conversion_view.dart';
+import 'package:crypto_converter/presenter/settings/views/settings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,15 +28,35 @@ class _AppState extends State<App> {
     return BlocProvider(
       create: (context) => ConverterCubit(),
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: AppStrings.appName,
-        theme: _theme,
-        initialRoute: Routes.initial,
-        onGenerateRoute: RouteManager.getRoute,
-        home: const ConversionView(),
-      ),
+          debugShowCheckedModeBanner: false,
+          title: AppStrings.appName,
+          theme: _theme,
+          initialRoute: Routes.initial,
+          onGenerateRoute: RouteManager.getRoute,
+          home: DefaultTabController(
+            length: 2,
+            child: Scaffold(
+              body: _buildTabBarView(),
+              bottomNavigationBar: _buildTabs(),
+            ),
+          )),
     );
   }
+
+  Widget _buildTabs() => const BottomAppBar(
+        color: Color.fromARGB(0, 8, 6, 6),
+        child: TabBar(
+          tabs: [
+            Tab(icon: Icon(AppIcons.bitcoin)),
+            Tab(icon: Icon(AppIcons.settings)),
+          ],
+        ),
+      );
+
+  Widget _buildTabBarView() => const TabBarView(children: [
+        ConversionView(),
+        SettingsView(),
+      ]);
 
   //TODO: refactor needed
   ThemeData get _theme => ThemeData.dark().copyWith(
@@ -62,6 +84,13 @@ class _AppState extends State<App> {
             fontWeight: defaultFontWeight,
             color: AppColors.white,
             fontSize: 14,
+          ),
+        ),
+        listTileTheme: const ListTileThemeData().copyWith(
+          shape: const Border(
+            bottom: BorderSide(
+              color: AppColors.grey,
+            ),
           ),
         ),
         cardTheme: const CardTheme().copyWith(
