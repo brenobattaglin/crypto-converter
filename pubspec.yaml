@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   bloc: ^8.0.0
-  flutter_bloc: ^8.0.0
+  flutter_bloc: ^8.1.6
   equatable: ^2.0.3
   google_fonts: ^4.0.4
   hydrated_bloc: ^9.1.5
