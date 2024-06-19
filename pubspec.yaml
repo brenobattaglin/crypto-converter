@@ -12,7 +12,7 @@ dependencies:
   bloc: ^8.0.0
   flutter_bloc: ^8.1.6
   equatable: ^2.0.3
-  google_fonts: ^4.0.4
+  google_fonts: ^6.2.1
   hydrated_bloc: ^9.1.5
   path_provider: ^2.0.3
   crypto_font_icons: ^1.0.1
