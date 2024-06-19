@@ -47,8 +47,8 @@ class _AppState extends State<App> {
         color: Color.fromARGB(0, 8, 6, 6),
         child: TabBar(
           tabs: [
-            Tab(icon: Icon(AppIcons.bitcoin)),
-            Tab(icon: Icon(AppIcons.settings)),
+            Tab(key: Key('app_tab_conversion'), icon: Icon(AppIcons.bitcoin)),
+            Tab(key: Key('app_tab_settings'), icon: Icon(AppIcons.settings)),
           ],
         ),
       );
