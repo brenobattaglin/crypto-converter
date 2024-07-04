@@ -1,5 +1,5 @@
 import 'storage.dart';
 
-initMocks() {
+initAppMocks() {
   mockHydratedStorage();
 }
