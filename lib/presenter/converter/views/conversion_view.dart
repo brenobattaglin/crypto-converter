@@ -37,7 +37,7 @@ class _ConversionViewState extends State<ConversionView> {
   Map<String, Currency> get currencies => widget._currencies;
 
   Widget _buildContent() => SafeArea(
-        key: Key('conversion_view_content'),
+        key: const Key('conversion_view_content'),
         child: BlocListener<ConverterCubit, ConverterState>(
           listener: (context, state) {
             if (state.status == ConversionStatus.failure) {
