@@ -10,8 +10,8 @@ import 'mocks/setup.dart';
 void main() {
   const appTabSettingsKey = Key('app_tab_settings');
 
-  group('app widget tests', () {
-    setUpAll(() => initMocks());
+  group('app', () {
+    setUpAll(() => initAppMocks());
 
     group('when app is rendered', () {
       testWidgets('should build properly', (WidgetTester tester) async {
