@@ -8,7 +8,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
 class ConversionView extends StatefulWidget {
-  const ConversionView({super.key});
+  final Map<String, Currency> _currencies;
+
+  const ConversionView({super.key, Map<String, Currency>? currencies})
+      : _currencies = currencies ?? SupportedCurrencies.list;
 
   @override
   State<ConversionView> createState() => _ConversionViewState();
@@ -26,12 +29,15 @@ class _ConversionViewState extends State<ConversionView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(AppStrings.appName, style: TextStyle(fontSize: 15)),
-      ),
-      body: SafeArea(
+  Widget build(BuildContext context) => Scaffold(
+        appBar: _buildAppBar(),
+        body: _buildContent(),
+      );
+
+  Map<String, Currency> get currencies => widget._currencies;
+
+  Widget _buildContent() => SafeArea(
+        key: const Key('conversion_view_content'),
         child: BlocListener<ConverterCubit, ConverterState>(
           listener: (context, state) {
             if (state.status == ConversionStatus.failure) {
@@ -40,12 +46,7 @@ class _ConversionViewState extends State<ConversionView> {
               refreshController.refreshCompleted();
             }
           },
-          child: SmartRefresher(
-            primary: false,
-            enablePullDown: true,
-            onRefresh: _onRefresh,
-            header: const WaterDropHeader(),
-            controller: refreshController,
+          child: _buildPullToRefresh(
             child: Center(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -62,13 +63,27 @@ class _ConversionViewState extends State<ConversionView> {
             ),
           ),
         ),
-      ),
+      );
+
+  SmartRefresher _buildPullToRefresh({required Widget child}) {
+    return SmartRefresher(
+      primary: false,
+      enablePullDown: true,
+      onRefresh: _onRefresh,
+      header: const WaterDropHeader(),
+      controller: refreshController,
+      child: child,
     );
   }
 
+  AppBar _buildAppBar() => AppBar(
+        key: const Key('conversion_view_app_bar'),
+        title: const Text(AppStrings.appName, style: TextStyle(fontSize: 15)),
+      );
+
   void _onRefresh() async => context.read<ConverterCubit>().fetchExchangeRates(selectedCurrency.code);
 
-  _buildCryptoCurrencyList(List<ExchangeRate> exchangeRates) => Expanded(
+  Widget _buildCryptoCurrencyList(List<ExchangeRate> exchangeRates) => Expanded(
         child: GridView.count(
           primary: false,
           crossAxisCount: 2,
@@ -93,18 +108,12 @@ class _ConversionViewState extends State<ConversionView> {
               ),
               DropdownButtonHideUnderline(
                 child: DropdownButton(
+                  key: const Key('currency_view_dropdown_button'),
                   value: selectedCurrency,
                   icon: const Icon(Icons.arrow_downward),
-                  items: SupportedCurrencies.list.entries
-                      .map((entry) => DropdownMenuItem<Currency>(
-                            value: entry.value,
-                            child: Text(
-                              entry.key,
-                            ),
-                          ))
-                      .toList(),
+                  items: _buildDropdownItems(),
                   onChanged: (Currency? newValue) => setState(() {
-                    selectedCurrency = newValue!;
+                    selectedCurrency = newValue ?? selectedCurrency;
                     refreshController.requestRefresh(needMove: true);
                   }),
                 ),
@@ -113,4 +122,14 @@ class _ConversionViewState extends State<ConversionView> {
           ),
         ],
       );
+
+  List<DropdownMenuItem<Currency>> _buildDropdownItems() => SupportedCurrencies.list.entries
+      .map((entry) => DropdownMenuItem<Currency>(
+            key: Key('currency_dropdown_item_${entry.key}'),
+            value: entry.value,
+            child: Text(
+              entry.key,
+            ),
+          ))
+      .toList();
 }
