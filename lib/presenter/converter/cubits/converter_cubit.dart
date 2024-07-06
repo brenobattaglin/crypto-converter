@@ -31,7 +31,7 @@ class ConverterCubit extends HydratedCubit<ConverterState> {
       final response = await _usecase.execute(
         InputListExchangeRateDto(
           currencyCode: currencyCode,
-          cryptoCodes: [
+          cryptoCodes: const [
             'BTC',
             'ETH',
             'LTC',
