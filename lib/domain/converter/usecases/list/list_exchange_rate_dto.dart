@@ -1,17 +1,24 @@
 import 'package:crypto_converter/domain/converter/models/exchange_rate.dart';
+import 'package:equatable/equatable.dart';
 
-class InputListExchangeRateDto {
-  List<String> cryptoCodes;
-  String currencyCode;
+class InputListExchangeRateDto extends Equatable {
+  final List<String> cryptoCodes;
+  final String currencyCode;
 
-  InputListExchangeRateDto({
+  const InputListExchangeRateDto({
     required this.cryptoCodes,
     required this.currencyCode,
   });
+
+  @override
+  List<Object?> get props => [cryptoCodes, currencyCode];
 }
 
-class OutputListExchangeRateDto {
-  List<ExchangeRate> exchangeRates;
+class OutputListExchangeRateDto extends Equatable {
+  final List<ExchangeRate> exchangeRates;
 
-  OutputListExchangeRateDto({required this.exchangeRates});
+  const OutputListExchangeRateDto({required this.exchangeRates});
+
+  @override
+  List<Object?> get props => [exchangeRates];
 }
