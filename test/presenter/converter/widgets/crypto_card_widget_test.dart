@@ -5,14 +5,14 @@ import 'package:crypto_converter/presenter/converter/widgets/crypto_card_widget.
 import 'package:flutter/material.dart';
 
 void main() {
-  final crypto = Cryptocurrency(name: 'Bitcoin', code: 'BTC');
+  const crypto = Cryptocurrency(name: 'Bitcoin', code: 'BTC');
   const rate = '4312.42';
   const labelTextKey = Key('converter_card_label_text');
   const labelIconKey = Key('converter_card_label_icon');
   const codeKey = Key('converter_card_code');
   const rateKey = Key('converter_card_rate');
 
-  Widget buildWidgetForTesting() => MaterialApp(
+  Widget buildWidgetForTesting() => const MaterialApp(
         home: Scaffold(
           body: CryptoCardWidget(
             crypto: crypto,
