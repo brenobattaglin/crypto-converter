@@ -1,4 +1,4 @@
-import 'package:crypto_converter/infrastructure/coin_api/models/exchange_rate_data.dart';
+import 'package:crypto_converter/modules/coin_api/repository/models/exchange_rate_data.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 

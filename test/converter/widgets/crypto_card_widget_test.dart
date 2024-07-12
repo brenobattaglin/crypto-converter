@@ -1,7 +1,7 @@
 import 'package:crypto_converter/core/icons.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:crypto_converter/domain/converter/models/cryptocurrency.dart';
-import 'package:crypto_converter/presenter/converter/widgets/crypto_card_widget.dart';
+import 'package:crypto_converter/modules/converter/models/cryptocurrency.dart';
+import 'package:crypto_converter/modules/converter/widgets/crypto_card_widget.dart';
 import 'package:flutter/material.dart';
 
 void main() {

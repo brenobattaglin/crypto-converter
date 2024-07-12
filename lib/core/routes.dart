@@ -1,5 +1,5 @@
-import 'package:crypto_converter/presenter/converter/views/conversion_view.dart';
-import 'package:crypto_converter/presenter/settings/views/settings_view.dart';
+import 'package:crypto_converter/modules/converter/views/conversion_view.dart';
+import 'package:crypto_converter/modules/settings/views/settings_view.dart';
 import 'package:flutter/material.dart';
 
 class Routes {

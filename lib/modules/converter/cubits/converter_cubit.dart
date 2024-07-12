@@ -1,9 +1,9 @@
 import 'dart:core';
 import 'dart:developer';
 
-import 'package:crypto_converter/domain/converter/models/exchange_rate.dart';
-import 'package:crypto_converter/domain/converter/usecases/list/list_exchange_rate_dto.dart';
-import 'package:crypto_converter/domain/converter/usecases/list/list_exchange_rate_usecase.dart';
+import 'package:crypto_converter/modules/converter/models/exchange_rate.dart';
+import 'package:crypto_converter/modules/converter/usecases/list_exchange_rate/list_exchange_rate_dto.dart';
+import 'package:crypto_converter/modules/converter/usecases/list_exchange_rate/list_exchange_rate_usecase.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:json_annotation/json_annotation.dart';

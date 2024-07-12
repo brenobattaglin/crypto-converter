@@ -1,14 +1,14 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:crypto_converter/domain/converter/models/cryptocurrency.dart';
-import 'package:crypto_converter/domain/converter/models/exchange_rate.dart';
-import 'package:crypto_converter/domain/converter/usecases/list/list_exchange_rate_dto.dart';
-import 'package:crypto_converter/infrastructure/coin_api/models/exchange_rate_data.dart';
-import 'package:crypto_converter/presenter/converter/cubits/converter_cubit.dart';
+import 'package:crypto_converter/modules/converter/models/cryptocurrency.dart';
+import 'package:crypto_converter/modules/converter/models/exchange_rate.dart';
+import 'package:crypto_converter/modules/converter/usecases/list_exchange_rate/list_exchange_rate_dto.dart';
+import 'package:crypto_converter/modules/coin_api/repository/models/exchange_rate_data.dart';
+import 'package:crypto_converter/modules/converter/cubits/converter_cubit.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../../mocks/classes.dart';
-import '../../../mocks/setup.dart';
+import '../../mocks/classes.dart';
+import '../../mocks/setup.dart';
 
 void main() {
   late MockListExchangeRateUsecase usecase;

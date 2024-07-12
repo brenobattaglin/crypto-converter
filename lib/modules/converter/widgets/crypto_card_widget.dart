@@ -1,6 +1,6 @@
 import 'package:crypto_converter/core/icons.dart';
 import 'package:crypto_converter/core/sizes.dart';
-import 'package:crypto_converter/domain/converter/models/cryptocurrency.dart';
+import 'package:crypto_converter/modules/converter/models/cryptocurrency.dart';
 import 'package:flutter/material.dart';
 
 class CryptoCardWidget extends StatelessWidget {
