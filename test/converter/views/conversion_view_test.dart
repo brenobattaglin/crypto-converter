@@ -1,14 +1,14 @@
-import 'package:crypto_converter/domain/converter/models/currency.dart';
-import 'package:crypto_converter/presenter/converter/cubits/converter_cubit.dart';
+import 'package:crypto_converter/modules/converter/models/currency.dart';
+import 'package:crypto_converter/modules/converter/cubits/converter_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:crypto_converter/presenter/converter/views/conversion_view.dart';
+import 'package:crypto_converter/modules/converter/views/conversion_view.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
-import '../../../mocks/classes.dart';
-import '../../../mocks/setup.dart';
+import '../../mocks/classes.dart';
+import '../../mocks/setup.dart';
 
 void main() {
   group('conversion view', () {

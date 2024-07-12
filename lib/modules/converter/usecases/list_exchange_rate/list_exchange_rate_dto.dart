@@ -1,4 +1,4 @@
-import 'package:crypto_converter/domain/converter/models/exchange_rate.dart';
+import 'package:crypto_converter/modules/converter/models/exchange_rate.dart';
 import 'package:equatable/equatable.dart';
 
 class InputListExchangeRateDto extends Equatable {
