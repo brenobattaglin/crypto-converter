@@ -19,3 +19,5 @@ jobs:
         run: flutter pub get
       - name: Analyze codebase
         run: flutter analyze
+      - name: Test codebase
+        run: flutter test
