@@ -1,15 +1,13 @@
-import 'package:crypto_converter/core/colors.dart';
 import 'package:crypto_converter/core/icons.dart';
 import 'package:crypto_converter/core/routes.dart';
 import 'package:crypto_converter/core/strings.dart';
+import 'package:crypto_converter/core/theme.dart';
 import 'package:crypto_converter/modules/converter/cubits/converter_cubit.dart';
 import 'package:crypto_converter/modules/converter/views/conversion_view.dart';
 import 'package:crypto_converter/modules/settings/views/settings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-const defaultFontWeight = FontWeight.w300;
 
 class App extends StatefulWidget {
   const App({
@@ -30,7 +28,7 @@ class _AppState extends State<App> {
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: AppStrings.appName,
-          theme: _theme,
+          theme: AppTheme().theme,
           initialRoute: Routes.initial,
           onGenerateRoute: RouteManager.getRoute,
           home: DefaultTabController(
@@ -57,53 +55,6 @@ class _AppState extends State<App> {
         ConversionView(),
         SettingsView(),
       ]);
-
-  //TODO: refactor needed
-  ThemeData get _theme => ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: AppColors.black,
-        appBarTheme: const AppBarTheme(
-          scrolledUnderElevation: 0,
-          color: AppColors.transparent,
-          titleTextStyle: TextStyle(
-            color: AppColors.white,
-          ),
-        ),
-        primaryColor: AppColors.white,
-        textTheme: const TextTheme().copyWith(
-          headlineSmall: const TextStyle(
-            fontWeight: defaultFontWeight,
-            color: AppColors.white,
-            fontSize: 22,
-          ),
-          bodyMedium: const TextStyle(
-            fontWeight: defaultFontWeight,
-            color: AppColors.white,
-            fontSize: 16,
-          ),
-          bodySmall: const TextStyle(
-            fontWeight: defaultFontWeight,
-            color: AppColors.white,
-            fontSize: 14,
-          ),
-        ),
-        listTileTheme: const ListTileThemeData().copyWith(
-          shape: const Border(
-            bottom: BorderSide(
-              color: AppColors.grey,
-            ),
-          ),
-        ),
-        cardTheme: const CardTheme().copyWith(
-          color: AppColors.grey,
-          shadowColor: AppColors.transparent,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30.0),
-          ),
-        ),
-        iconTheme: const IconThemeData().copyWith(
-          color: AppColors.white,
-        ),
-      );
 
   void _lockScreenOrientation() => SystemChrome.setPreferredOrientations([
         DeviceOrientation.portraitUp,
