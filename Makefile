@@ -7,17 +7,20 @@ build_runner_delete_conflicting_outputs:
 build_runner_clean:
 	dart pub run build_runner clean
 
+check_outdated_dependencies:
+	flutter pub outdated
+
 clean:
 	flutter clean
-
-coverage:
-	flutter test --coverage && genhtml coverage/lcov.info -o coverage/html && open coverage/html/index.html
 
 format:
 	dart format . -l 120
 
 run:
 	flutter run --dart-define-from-file env.json
+
+test_coverage:
+	flutter test --coverage && genhtml coverage/lcov.info -o coverage/html && open coverage/html/index.html
 
 setup:
 	sh scripts/create-env-json.sh
