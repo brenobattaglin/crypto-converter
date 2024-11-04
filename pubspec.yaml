@@ -14,7 +14,7 @@ dependencies:
   equatable: ^2.0.3
   google_fonts: ^6.2.1
   hydrated_bloc: ^9.1.5
-  path_provider: ^2.1.4
+  path_provider: ^2.1.5
   crypto_font_icons: ^1.0.1
   pull_to_refresh_flutter3: ^2.0.2
   flutter_services_binding: ^0.1.0
