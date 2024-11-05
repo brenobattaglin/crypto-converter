@@ -12,4 +12,6 @@ key.properties
 **/*.keystore
 **/*.jks
 
+### macOS ###
+# General
 .DS_Store
