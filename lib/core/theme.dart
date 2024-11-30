@@ -17,7 +17,12 @@ class AppTheme extends Theme {
         listTileTheme: _listTileTheme,
         cardTheme: _cardTheme,
         iconTheme: _iconTheme,
+        colorScheme: _colorScheme,
+        progressIndicatorTheme: _progressIndicatorTheme,
+        indicatorColor: AppColors.white,
       );
+
+  ColorScheme get _colorScheme => ColorScheme.dark().copyWith(primary: AppColors.white);
 
   AppBarTheme get _appBarTheme => const AppBarTheme(
         scrolledUnderElevation: 0,
@@ -63,5 +68,12 @@ class AppTheme extends Theme {
           color: AppColors.white,
           fontSize: 14,
         ),
+      );
+
+  ProgressIndicatorThemeData get _progressIndicatorTheme => ProgressIndicatorThemeData().copyWith(
+        color: AppColors.white,
+        refreshBackgroundColor: AppColors.black,
+        circularTrackColor: AppColors.white,
+        linearTrackColor: AppColors.white,
       );
 }
