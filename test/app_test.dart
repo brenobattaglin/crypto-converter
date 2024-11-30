@@ -1,9 +1,9 @@
+import 'package:crypto_converter/app.dart';
 import 'package:crypto_converter/core/icons.dart';
-import 'package:crypto_converter/modules/converter/views/conversion_view.dart';
+import 'package:crypto_converter/modules/converter/views/converter_view.dart';
 import 'package:crypto_converter/modules/settings/views/settings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:crypto_converter/app.dart';
 
 import 'mocks/setup.dart';
 
