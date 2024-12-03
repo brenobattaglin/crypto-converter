@@ -27,34 +27,37 @@ class _ConversionViewState extends State<ConversionView> {
         body: _buildContent(),
       );
 
-  Widget _buildContent() => BlocListener<ConverterCubit, ConverterState>(
-      listener: (context, state) {
-        if (state.status == ConversionStatus.failure) {
-          _showSnackBar(context, AppStrings.somethingWentWrong);
-        } else if (state.status == ConversionStatus.success) {
-          _showSnackBar(context, AppStrings.cryptocurrenciesUpdated);
-        }
-      },
-      child: _buildPullToRefresh(
-        scrollView: CustomScrollView(
-          slivers: [
-            SliverFillRemaining(
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    _buildFiatMoneyDropdownButton(),
-                    _buildCryptocurrencyGrid(),
-                  ],
-                ),
-              ),
-            )
-          ],
-        ),
-      ));
+  Widget _buildContent() => BlocConsumer<ConverterCubit, ConverterState>(
+        listener: (_, state) {
+          if (state.status == ConversionStatus.failure) {
+            _showSnackBar(AppStrings.somethingWentWrong);
+          } else if (state.status == ConversionStatus.success) {
+            _showSnackBar(AppStrings.cryptocurrenciesUpdated);
+          }
+        },
+        builder: (_, __) {
+          return _buildPullToRefresh(
+            scrollView: CustomScrollView(
+              slivers: [
+                SliverFillRemaining(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        _buildFiatMoneyDropdownButton(),
+                        _buildCryptocurrencyGrid(),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+          );
+        },
+      );
 
-  void _showSnackBar(BuildContext context, String text) => ScaffoldMessenger.of(context).showSnackBar(
+  void _showSnackBar(String text) => ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(text)),
       );
 
@@ -68,7 +71,8 @@ class _ConversionViewState extends State<ConversionView> {
         child: scrollView,
       );
 
-  Future<void> fetchExchangeRates() async => context.read<ConverterCubit>().fetchExchangeRates(selectedCurrency.code);
+  Future<void> fetchExchangeRates() async =>
+      BlocProvider.of<ConverterCubit>(context).fetchExchangeRates(selectedCurrency.code);
 
   Widget _buildCryptocurrencyGrid() => ConverterCryptocurrencies();
 
@@ -83,15 +87,14 @@ class _ConversionViewState extends State<ConversionView> {
               ),
               DropdownButtonHideUnderline(
                 child: DropdownButton(
-                  key: const Key('currency_view_dropdown_button'),
-                  value: selectedCurrency,
-                  icon: const Icon(Icons.arrow_downward),
-                  items: _buildDropdownItems(),
-                  onChanged: (Currency? newValue) => setState(() {
-                    selectedCurrency = newValue ?? selectedCurrency;
-                    fetchExchangeRates();
-                  }),
-                ),
+                    key: const Key('converter_view_dropdown_button'),
+                    value: selectedCurrency,
+                    icon: const Icon(Icons.arrow_downward),
+                    items: _buildDropdownItems(),
+                    onChanged: (Currency? newValue) {
+                      selectedCurrency = newValue ?? selectedCurrency;
+                      fetchExchangeRates();
+                    }),
               ),
             ],
           ),
@@ -100,7 +103,7 @@ class _ConversionViewState extends State<ConversionView> {
 
   List<DropdownMenuItem<Currency>> _buildDropdownItems() => SupportedCurrencies.list.entries
       .map((entry) => DropdownMenuItem<Currency>(
-            key: Key('currency_dropdown_item_${entry.key}'),
+            key: Key('converter_view_dropdown_item_${entry.key}'),
             value: entry.value,
             child: Text(
               entry.key,
