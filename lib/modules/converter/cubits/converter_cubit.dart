@@ -43,8 +43,8 @@ class ConverterCubit extends HydratedCubit<ConverterState> {
         status: ConversionStatus.success,
         exchangeRates: response.exchangeRates,
       ));
-    } catch (e) {
-      log('[ConverterCubit] Error: $e');
+    } on Object catch (e, stackTrace) {
+      log('[ConverterCubit] error: $e, stackTrace: $stackTrace');
       emit(state.copyWith(status: ConversionStatus.failure));
     }
   }

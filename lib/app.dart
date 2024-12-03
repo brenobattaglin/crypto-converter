@@ -3,7 +3,7 @@ import 'package:crypto_converter/core/routes.dart';
 import 'package:crypto_converter/core/strings.dart';
 import 'package:crypto_converter/core/theme.dart';
 import 'package:crypto_converter/modules/converter/cubits/converter_cubit.dart';
-import 'package:crypto_converter/modules/converter/views/conversion_view.dart';
+import 'package:crypto_converter/modules/converter/views/converter_view.dart';
 import 'package:crypto_converter/modules/settings/views/settings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

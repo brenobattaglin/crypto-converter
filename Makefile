@@ -1,3 +1,6 @@
+analyze:
+	flutter analyze
+
 build_runner:
 	dart pub run build_runner build
 

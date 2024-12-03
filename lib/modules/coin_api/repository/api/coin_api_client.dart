@@ -5,7 +5,6 @@ import 'package:crypto_converter/core/env.dart';
 import 'package:crypto_converter/modules/coin_api/repository/models/exchange_rate.dart';
 import 'package:http/http.dart' as http;
 
-/// Exception thrown when exchange rate request fails.
 class ExchangeRateRequestFailure implements Exception {}
 
 class ExchangeRateNotFoundFailure implements Exception {}
