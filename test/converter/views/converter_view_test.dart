@@ -18,8 +18,13 @@ void main() {
   setUp(() {
     initAppMocks();
     converterCubit = MockConverterCubit();
+    when(() => converterCubit.fetchExchangeRates(any())).thenAnswer((_) async => {});
     when(() => converterCubit.state).thenReturn(ConverterState());
     when(() => converterCubit.state).thenReturn(ConverterState(status: ConversionStatus.success));
+    whenListen(
+      converterCubit,
+      Stream.fromIterable([ConverterState(status: ConversionStatus.success)]),
+    );
   });
 
   Widget buildWidgetForTesting() => MaterialApp(
@@ -39,7 +44,7 @@ void main() {
 
     testWidgets('should display fiat money dropdown button', (WidgetTester tester) async {
       await tester.pumpWidget(buildWidgetForTesting());
-      expect(find.byKey(const Key('currency_view_dropdown_button')), findsOneWidget);
+      expect(find.byKey(const Key('converter_view_dropdown_button')), findsOneWidget);
     });
 
     testWidgets('should display cryptocurrency grid', (WidgetTester tester) async {
@@ -90,17 +95,15 @@ void main() {
 
     testWidgets('should update selected currency and fetch exchange rates on dropdown change',
         (WidgetTester tester) async {
-      final currency = SupportedCurrencies.list.entries.first.value;
-
       await tester.pumpWidget(buildWidgetForTesting());
 
-      await tester.tap(find.byKey(const Key('currency_view_dropdown_button')));
+      expect(find.byKey(const Key('converter_view_dropdown_button')), findsOneWidget);
+      await tester.tap(find.byKey(const Key('converter_view_dropdown_button')));
       await tester.pumpAndSettle();
 
-      await tester.tap(find.text(currency.code).last);
-      await tester.pumpAndSettle();
+      await tester.tap(find.text('EUR'));
 
-      verify(() => converterCubit.fetchExchangeRates(currency.code)).called(1);
+      verify(() => converterCubit.fetchExchangeRates('EUR')).called(1);
     });
   });
 }
