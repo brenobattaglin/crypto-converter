@@ -178,10 +178,10 @@ packages:
     dependency: "direct dev"
     description:
       name: coverage
-      sha256: "4b03e11f6d5b8f6e5bb5e9f7889a56fe6c5cbe942da5378ea4d4d7f73ef9dfe5"
+      sha256: e3493833ea012784c740e341952298f1cc77f1f01b1bbc3eb4eecf6984fb7f43
       url: "https://pub.dev"
     source: hosted
-    version: "1.11.0"
+    version: "1.11.1"
   crypto:
     dependency: transitive
     description:
@@ -275,14 +275,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.0.0"
-  flutter_services_binding:
-    dependency: "direct main"
-    description:
-      name: flutter_services_binding
-      sha256: ee02b87fdf0984567ddc004b9033aa97da28497cb57496ca6926e0588728bcbe
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -616,14 +608,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.3"
-  pull_to_refresh_flutter3:
-    dependency: "direct main"
-    description:
-      name: pull_to_refresh_flutter3
-      sha256: "37a88d901cca9a46dbdd46523de8e7b35a3e58634a0e775b1a5904981f69b353"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.2"
   shelf:
     dependency: transitive
     description:
